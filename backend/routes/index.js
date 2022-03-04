@@ -7,6 +7,8 @@ const apiRouter = require('./api');
 //   res.send('Hello World!');
 // });
 
+router.use('/api', apiRouter);
+
 // Static routes
 // Serve React build files in production
 if (process.env.NODE_ENV === 'production') {
