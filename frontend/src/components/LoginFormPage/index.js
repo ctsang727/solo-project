@@ -50,7 +50,7 @@ function LoginFormPage() {
                 </form>
             </div>
             <div className='container2'>
-                <img src='https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png'></img>
+                <img alt='default' src='https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png'></img>
             </div>
         </div>
     );
