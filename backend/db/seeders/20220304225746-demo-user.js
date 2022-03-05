@@ -21,7 +21,7 @@ module.exports = {
         firstName: 'user',
         lastName: 'two',
         hashedPassword: bcrypt.hashSync('password3')
-      }
+      },
     ], {});
   },
 
