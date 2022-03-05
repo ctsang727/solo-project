@@ -33,7 +33,7 @@ function LoginFormPage() {
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                         <input
-                            placeholder='Username or Email'
+                            placeholder='Email'
                             type="text"
                             value={credential}
                             onChange={(e) => setCredential(e.target.value)}
