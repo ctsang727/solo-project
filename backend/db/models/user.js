@@ -4,18 +4,16 @@ const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    username: {
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [4, 30],
-        isNotEmail(value) {
-          if (Validator.isEmail(value)) {
-            throw new Error('Cannot be an email.');
-          }
-        }
-      }
     },
+
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -30,39 +28,40 @@ module.exports = (sequelize, DataTypes) => {
         len: [60, 60]
       }
     }
-  },
-    {
-      defaultScope: {
-        attributes: {
-          exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt']
-        }
-      },
-      scopes: {
-        currentUser: {
-          attributes: { exclude: ['hashedPassword'] }
-        },
-        loginUser: {
-          attributes: {}
-        }
+  }, {
+    defaultScope: {
+      attributes: {
+        exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt']
       }
-    });
+    },
+    scopes: {
+      currentUser: {
+        attributes: { exclude: ['hashedPassword'] }
+      },
+      loginUser: {
+        attributes: {}
+      }
+    }
+  });
 
-  User.signup = async function ({ username, email, password }) {
-    const hashedPassword = bcrypt.hashSync(password);
-    const user = await User.create({
-      username,
-      email,
-      hashedPassword
-    });
-    return await User.scope('currentUser').findByPk(user.id);
+  User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
+    const { id, firstName, lastName, email } = this; // context will be the User instance
+    return { id, firstName, lastName, email };
   };
 
-  User.login = async function ({ credential, password }) {
+  User.prototype.validatePassword = function (password) {
+    return bcrypt.compareSync(password, this.hashedPassword.toString());
+   };
+
+   User.getCurrentUserById = async function (id) {
+    return await User.scope('currentUser').findByPk(id);
+   };
+
+   User.login = async function ({ credential, password }) {
     const { Op } = require('sequelize');
     const user = await User.scope('loginUser').findOne({
       where: {
         [Op.or]: {
-          username: credential,
           email: credential
         }
       }
@@ -72,24 +71,20 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.getCurrentUserById = async function (id) {
-    return await User.scope('currentUser').findByPk(id);
+  User.signup = async function ({ firstName, lastName, email, password }) {
+    const hashedPassword = bcrypt.hashSync(password);
+    const user = await User.create({
+      firstName,
+      lastName,
+      email,
+      hashedPassword
+    });
+    return await User.scope('currentUser').findByPk(user.id);
   };
 
-  User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
-    const { id, username, email } = this; // context will be the User instance
-    return { id, username, email };
-  };
-
-  User.prototype.validatePassword = function (password) {
-    return bcrypt.compareSync(password, this.hashedPassword.toString());
-  };
-
-  User.associate = function (models) {
+  User.associate = function(models) {
     // associations can be defined here
   };
-
-
 
   return User;
 };
