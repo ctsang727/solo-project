@@ -1,0 +1,71 @@
+.splash-everything{
+    display:grid;
+    grid-template-rows: 1fr 1fr;
+
+}
+
+
+
+
+.splash-everything > div {
+    text-align: center;
+}
+
+.splash-main-container{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    background-image: url('https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_large_assets/7822ae13199f/assets/img/home/hero_photos/9pnLHoZnwY067nbjHNPnfQ.jpg');
+}
+
+.splash-main-container div {
+    margin: 10px;
+}
+
+.splash-ul{
+    display: grid;
+    grid-template-columns: 10% 10% 60% 10% 10%;
+}
+
+.splash-ul li{
+    list-style-type: none;
+    margin: 5px;
+
+}
+
+.yelp-logo{
+    height: 75px;
+    width: 180px;
+    position: relative;
+}
+
+.splash-search-bar{
+    width: 640px;
+    border-radius: 3px;
+    border: 1px solid white;
+    height: 25px;
+}
+
+
+
+.splash-ul-under-search{
+    display: flex;
+    justify-content: center;
+    color: white;
+    list-style-type: none;
+    margin-right: 300px;
+    margin-left: 300px;
+    font-size: 12px;
+}
+
+.splash-ul-under-search li{
+    margin: 15px;
+}
+
+
+.splash-photo-creds{
+    color:white;
+    
+    bottom: 0px;
+}
+

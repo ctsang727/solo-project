@@ -8,4 +8,6 @@
     text-decoration: none;
 }
 
-
+#navbar{
+    list-style-type: none;
+}
