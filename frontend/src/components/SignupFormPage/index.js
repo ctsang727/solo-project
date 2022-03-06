@@ -8,7 +8,8 @@ function SignupFormPage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const [email, setEmail] = useState("");
-    const [username, setUsername] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
@@ -19,7 +20,7 @@ function SignupFormPage() {
         e.preventDefault();
         if (password === confirmPassword) {
             setErrors([]);
-            return dispatch(sessionActions.signup({ email, username, password }))
+            return dispatch(sessionActions.signup({ email, firstName, lastName, password }))
                 .catch(async (res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
@@ -43,10 +44,18 @@ function SignupFormPage() {
                         required
                     />
                     <input
-                        placeholder="Username"
+                        placeholder="First Name"
                         type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        required
+                    />
+
+                    <input
+                        placeholder="Last Name"
+                        type="text"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
                         required
                     />
 
@@ -57,6 +66,7 @@ function SignupFormPage() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
+                    
                     <input
                         placeholder="Confirm Password"
                         type="password"
