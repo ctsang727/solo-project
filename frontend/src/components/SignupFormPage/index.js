@@ -66,6 +66,7 @@ function SignupFormPage() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
+                    
                     <input
                         placeholder="Confirm Password"
                         type="password"

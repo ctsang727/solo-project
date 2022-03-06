@@ -36,3 +36,9 @@ img{
     width: auto;
     position: fixed;
 }
+
+#navbar {
+    list-style-type: none;
+    visibility: hidden;
+    
+}
