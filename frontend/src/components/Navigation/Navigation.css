@@ -8,4 +8,42 @@
     text-decoration: none;
 }
 
+#navbar{
+    list-style-type: none;
+    color: blue;
+}
 
+.profile-button{
+    background-color: blue;
+    z-index: 0;
+    position: relative;
+}
+
+.profile-dropdown{
+    position: absolute;
+    list-style-type: none;
+    padding:0px;
+    background-color: white;
+    width: 95%;
+    
+}
+
+/*icons needed */
+.profile-dropdown li{
+    color:blue;
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding:3px;
+}
+
+.profile-dropdown button{
+    color:lightblue
+    
+}
+
+.profile-button-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}

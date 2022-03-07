@@ -15,6 +15,7 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
+        <NavLink className='inactive' activeclassName='active' exact to="/">Home</NavLink>
         <NavLink className='inactive' activeclassName='active' to="/#"> For Businesses </NavLink>
         <NavLink className='inactive' activeclassName='active' to="/#"> Write a Review </NavLink>
         <NavLink className='inactive' activeclassName='active' to="/login"> Log In </NavLink>
@@ -27,7 +28,6 @@ function Navigation({ isLoaded }) {
     <div className='navbar-container'>
       <ul id='navbar'>
         <li>
-          <NavLink className='inactive' activeclassName='active' exact to="/">Home</NavLink>
           {isLoaded && sessionLinks}
         </li>
       </ul>
