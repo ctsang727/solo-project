@@ -39,6 +39,7 @@
     padding: 1px;
     flex-wrap: nowrap;
     display:flex;
+    align-items: center;
 
 }
 
