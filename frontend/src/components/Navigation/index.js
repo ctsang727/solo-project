@@ -28,7 +28,6 @@ function Navigation({ isLoaded }) {
     <div className='navbar-container'>
       <ul id='navbar'>
         <li>
-
           {isLoaded && sessionLinks}
         </li>
       </ul>

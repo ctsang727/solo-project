@@ -19,7 +19,7 @@ function App() {
       
         <Switch>
           <Route exact path='/'>
-            <Splashpage />
+            <Splashpage isLoaded={isLoaded} />
           </Route>
           <Route path='/login'>
           <Navigation isLoaded={isLoaded} />

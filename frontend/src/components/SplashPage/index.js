@@ -5,6 +5,7 @@ const SplashpageContainer = () => {
 
     return (
       <Splashpage />
+      
     )
   }
   

@@ -1,6 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import './Splashpage.css'
+import ProfileButton from '../Navigation/ProfileButton';
 
 //import { coverUrl } from '../../utilities/utils';
 
@@ -16,7 +18,47 @@ import './Splashpage.css'
 */
 
 
+const styleLogin = {
+    textDecoration: 'none',
+    color: 'white',
+    padding: '5px'
+}
+
+const styleSignup = {
+    textDecoration: 'none',
+    color: 'white',
+    border: '2px solid white',
+    padding: '5px',
+    borderRadius: '3px',
+}
+
 const Splashpage = ({ }) => {
+
+    const sessionUser = useSelector(state => state.session.user);
+    let splashLinks;
+    if (sessionUser) {
+        splashLinks = (
+            <ProfileButton user={sessionUser} />
+         
+        );
+    } else {
+        splashLinks = (
+            <nav>
+                <ul className='splash-ul'>
+                    <li>Write a Review</li>
+                    <li>For Businesses</li>
+                    <li></li>
+                    <li>
+                        <Link to='/login' style={styleLogin}>Log In</Link>
+                    </li>
+                    <li>
+                        <Link to='/signup' style={styleSignup}>Sign Up</Link>
+                    </li>
+                </ul>
+            </nav>
+        )
+
+    }
 
     return (
         <div>
@@ -25,15 +67,10 @@ const Splashpage = ({ }) => {
 
                 <div className='splash-main-container'>
                     <div className='splash-nav'>
-                        <nav>
-                            <ul className='splash-ul'>
-                                <li>Write a Review</li>
-                                <li>For Businesses</li>
-                                <li></li>
-                                <li>Log In</li>
-                                <li>Sign Up</li>
-                            </ul>
-                        </nav>
+                        <div></div>
+
+                        {splashLinks}
+                        <div></div>
                     </div>
                     <div className='splash-logo'>
 
