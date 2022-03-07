@@ -91,21 +91,6 @@ const Splashpage = ({ }) => {
                         </ul>
                     </div>
                 </div>
-
-                {/* <div className='splash-col-1'>
-                    <h1> column 1 </h1>
-                </div>
-                <div className='splash-col-2'>
-                    <h1> column 2 </h1>
-                </div>
-
-                <div className='splash-col-3'>
-                    <h1> column 3 </h1>
-                </div> */}
-                {/* <h1>Tyelp</h1>
-                <Link to='/'>
-                    TYELPPPP
-                </Link> */}
             </div>
 
         </div>

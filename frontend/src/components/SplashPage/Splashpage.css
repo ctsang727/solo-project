@@ -12,7 +12,7 @@
 .splash-main-container{
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: 700px;
     background-image: url('https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_large_assets/7822ae13199f/assets/img/home/hero_photos/9pnLHoZnwY067nbjHNPnfQ.jpg');
 }
 
@@ -73,9 +73,5 @@
 }
 
 
-.splash-photo-creds{
-    color:white;
-    
-    bottom: 0px;
-}
+
 
