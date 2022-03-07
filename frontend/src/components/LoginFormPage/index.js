@@ -25,13 +25,13 @@ function LoginFormPage() {
             });
     }
 
-    // const demoSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log('test')
-    //     const credential = 'demo@user.io'
-    //     const password = 'password'
-    //     return dispatch(sessionActions.login({ credential, password }));
-    // }
+    const demoSubmit = (e) => {
+        e.preventDefault();
+        console.log('test')
+        const credential = 'demo@user.io'
+        const password = 'password'
+        return dispatch(sessionActions.login({ credential, password }));
+    }
 
     return (
         <div className='large-container'>
@@ -56,7 +56,7 @@ function LoginFormPage() {
                         />
                     <button type="submit">Log In</button>
                 </form>
-                {/* <button type='submit' onClick={demoSubmit}>Demo</button> */}
+                <button type='submit' onClick={demoSubmit}>Demo</button>
             </div>
             <div className='container2'>
                 <img alt='default' src='https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png'></img>
