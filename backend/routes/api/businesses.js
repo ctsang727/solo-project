@@ -31,20 +31,11 @@ router.get(
   })
 )
 
-router.get(
-  '/new', asyncHandler(async (req, res) => {
-    console.log('IN GET ROUTE IDK')
-    // const business = await Business.create(req.body);
-    // console.log('backend12341515', business)
-    // res.json(business);
-  }));
-
 
 router.post(
   '/new', asyncHandler(async (req, res) => {
     console.log('INSIDE POST ROUTE')
     const business = await Business.create(req.body);
-    console.log('backend12341515', business)
     res.json(business);
   }));
 
