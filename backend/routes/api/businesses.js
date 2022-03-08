@@ -7,13 +7,38 @@ const { Business } = require('../../db/models');
 const router = express.Router();
 
 router.get(
-    '/:id',
+    '/businesses',
     asyncHandler(async function (req, res) {
-    const id = +req.params.id;
-    console.log('inside backend')
-    const business = await Business.scope('detailed').findByPk(id);
-    return res.json(business);
-      //FROM SHARON BELOW:
+      const businesses = await Business.findAll();
+      console.log('from the api', businesses)
+      res.json(businesses);
+    // const id = +req.params.id;
+    // console.log('inside backend')
+    // const business = await Business.scope('detailed').findByPk(id);
+    // return res.json(business);
+     
+})
+);
+
+module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //FROM SHARON BELOW:
         //const id = req.params.id;
     //   const businessId = parseInt(req.params.id, 10)
       //nothing console.logs
@@ -23,6 +48,3 @@ router.get(
     //         id: businessId }
     //     });
     // return res.json(business);
-})
-);
-module.exports = router;
