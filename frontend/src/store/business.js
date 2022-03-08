@@ -43,7 +43,7 @@ export const fetchOneBusiness = id => async dispatch => {
 //POST new business thunk
 export const postBusiness = (data) => async dispatch => {
   console.log('in THUNK')
-  const res = await csrfFetch('/api/businesses', {
+  const res = await csrfFetch('/api/business/new', {
     method: 'POST',
     headers: { "Content-Type": "application/json", },
     body: JSON.stringify(data)

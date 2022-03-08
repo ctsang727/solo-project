@@ -33,10 +33,10 @@ function App() {
           {/* <Route path= '/businesses'>
             <BusinessDetail />
             </Route> */}
-          <Route path= '/business/:id(\\d+)'>
+          <Route path= '/business/:id'>
             <BusinessDetail />
             </Route>
-          <Route path= '/business/new'>
+          <Route path= '/new'>
             <NewBusinessForm />
             </Route>
         </Switch>

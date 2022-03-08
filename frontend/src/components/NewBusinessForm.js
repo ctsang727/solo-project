@@ -1,13 +1,18 @@
 import { useDispatch } from "react-redux"
 import { postBusiness } from "../store/business";
-import { useState } from "react";
+import { useState, } from "react";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 const NewBusinessForm = () => {
-    console.log('hello?')
+    //console.log('Start of front end')
     const dispatch = useDispatch();
     const history = useHistory();
+    const sessionUser = useSelector(state => state.session.user);
+    //console.log(sessionUser?.id)
+
+    //const [ownerId, setOwnerId] = useState(sessionUser)
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('')
@@ -22,7 +27,9 @@ const NewBusinessForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const ownerId = sessionUser?.id
         const newBusiness = {
+            ownerId,
             title,
             description,
             address,
@@ -41,6 +48,10 @@ const NewBusinessForm = () => {
         <div>
             <h1>New Business Form</h1>
             <form onSubmit={handleSubmit}>
+                <input
+                type='hidden'
+                name='ownerId'
+                ></input>
                 <input
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
