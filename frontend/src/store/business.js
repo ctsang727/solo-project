@@ -21,15 +21,15 @@ export const loadOneBusiness = (business) => {
   }
 }
 
-//GET request thunk
-export const fetchBusinesses = () => async dispatch => {
-  const res = await csrfFetch('/api/business/businesses')
-  console.log('RES', res)
-  const businesses = await res.json()
-  console.log('BUSINESS??', businesses)
-  dispatch(loadBusiness(businesses))
-  return loadBusiness
-}
+//GET all business request thunk
+// export const fetchBusinesses = () => async dispatch => {
+//   const res = await csrfFetch('/api/business/businesses')
+//   console.log('RES', res)
+//   const businesses = await res.json()
+//   console.log('BUSINESS??', businesses)
+//   dispatch(loadBusiness(businesses))
+//   return loadBusiness
+// }
 
 //GET one business thunk
 export const fetchOneBusiness = id => async dispatch => {
@@ -42,26 +42,9 @@ export const fetchOneBusiness = id => async dispatch => {
 const initialState = { entries: ['test'], isLoading: true }
 
 const businessReducer = (state = initialState, action) => {
-  let newState;
-  let newEntries;
-    switch(action.type) {
-        case LOAD_BUSINESS:
-          // return {
-          //   ...state,
-          //   entries: [...action.businesses]
-          // };
-          newState = {...state}
-          newEntries = {}
-          action.businesses.forEach(business => newEntries[business.id] = business)
-          newState.entries = newEntries
-          return newState
-        
+  
+    switch(action.type) {  
         case LOAD_ONE_BUSINESS:
-          // newState = {...state}
-          // newEntries = {}
-          // action.businesses.forEach(business => newEntries[business.id] = business)
-          // newState.entries = newEntries
-          // return newState
           return {
             ...state,
             businessObj: {
@@ -69,8 +52,6 @@ const businessReducer = (state = initialState, action) => {
               ...action.business,
             },
           };
-        
-
         default:
             return state;
     }
@@ -78,6 +59,20 @@ const businessReducer = (state = initialState, action) => {
 
 export default businessReducer;
 
+
+//this will load all businesses
+// let newState;
+//   let newEntries;
+        // case LOAD_BUSINESS:
+        //   // return {
+        //   //   ...state,
+        //   //   entries: [...action.businesses]
+        //   // };
+        //   newState = {...state}
+        //   newEntries = {}
+        //   action.businesses.forEach(business => newEntries[business.id] = business)
+        //   newState.entries = newEntries
+        //   return newState
 
 // export const getOneBusiness = id => async dispatch => {
 //     const response = await fetch(`/api/businesses/${id}`);
