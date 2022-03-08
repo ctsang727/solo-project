@@ -39,6 +39,24 @@ router.post(
     res.json(business);
   }));
 
+//edit business
+// router.put(
+//   '/:id',
+//   asyncHandler(async function (req, res) {
+//     const id = req.body.id;
+//     delete req.body.id;
+//     await Business.update(req.body, {
+//       where: { id },
+//       returning: true,
+//       plain: true,
+//     });
+
+//     const business = await Business.findByPk(id);
+
+//     return res.json(business);
+//   })
+// );
+
 
 module.exports = router;
 
