@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 
 
 const BusinessDetail = () => {
+    console.log('are we here?')
     const dispatch = useDispatch();
     const  businessId  = useParams();
 

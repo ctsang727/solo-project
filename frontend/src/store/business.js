@@ -1,18 +1,20 @@
 import { csrfFetch } from "./csrf"
+
 const LOAD_BUSINESS = 'business/loadBusiness'
 const LOAD_ONE_BUSINESS = 'business/loadOneBusiness'
+const ADD_ONE = 'business/addBusiness'
 
-// const getOne = business => ({
-//     type: GET_ONE,
-//     business,
-// })
+// export const loadBusiness = (businesses) => {
+//   return { 
+//     type: LOAD_BUSINESS, 
+//     businesses
+//   }
+// }
 
-export const loadBusiness = (businesses) => {
-  return { 
-    type: LOAD_BUSINESS, 
-    businesses
-  }
-}
+export const addBusiness = (newBusiness) => ({
+  type: ADD_ONE,
+  newBusiness,
+});
 
 export const loadOneBusiness = (business) => {
   return {
@@ -38,12 +40,27 @@ export const fetchOneBusiness = id => async dispatch => {
   dispatch(loadOneBusiness(business))
 }
 
+//POST new business thunk
+export const postBusiness = (data) => async dispatch => {
+  console.log('in THUNK')
+  const res = await csrfFetch('/api/business/new', {
+    method: 'POST',
+    headers: { "Content-Type": "application/json", },
+    body: JSON.stringify(data)
+  })
+  const newBusiness = await res.json()
+  console.log('NEWBIZ BOTTOM THUNK', newBusiness)
+  dispatch(addBusiness(newBusiness))
+  return newBusiness;
+}
+
 
 const initialState = { entries: ['test'], isLoading: true }
 
 const businessReducer = (state = initialState, action) => {
   
     switch(action.type) {  
+     
         case LOAD_ONE_BUSINESS:
           return {
             ...state,
@@ -52,6 +69,15 @@ const businessReducer = (state = initialState, action) => {
               ...action.business,
             },
           };
+        case ADD_ONE:
+          let newState;
+          let newEntries;
+          newState={...state}
+          newEntries={...state.entries}
+          newEntries[action.newBusiness.id] = action.newBusiness;
+          newState.entries = newEntries
+          return newState;
+
         default:
             return state;
     }
