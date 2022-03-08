@@ -1,4 +1,6 @@
+import { csrfFetch } from "./csrf"
 const LOAD_BUSINESS = 'business/loadBusiness'
+const LOAD_ONE_BUSINESS = 'business/loadOneBusiness'
 
 // const getOne = business => ({
 //     type: GET_ONE,
@@ -12,9 +14,16 @@ export const loadBusiness = (businesses) => {
   }
 }
 
+export const loadOneBusiness = (business) => {
+  return {
+    type: LOAD_ONE_BUSINESS,
+    business
+  }
+}
+
 //GET request thunk
 export const fetchBusinesses = () => async dispatch => {
-  const res = await fetch('/api/businesses')
+  const res = await csrfFetch('/api/business/businesses')
   console.log('RES', res)
   const businesses = await res.json()
   console.log('BUSINESS??', businesses)
@@ -22,8 +31,15 @@ export const fetchBusinesses = () => async dispatch => {
   return loadBusiness
 }
 
+//GET one business thunk
+export const fetchOneBusiness = id => async dispatch => {
+  const res = await csrfFetch(`/api/business/${id}`)
+  const business = await res.json()
+  dispatch(loadOneBusiness(business))
+}
 
-const initialState = { entries: [], isLoading: true }
+
+const initialState = { entries: ['test'], isLoading: true }
 
 const businessReducer = (state = initialState, action) => {
   let newState;
@@ -39,6 +55,22 @@ const businessReducer = (state = initialState, action) => {
           action.businesses.forEach(business => newEntries[business.id] = business)
           newState.entries = newEntries
           return newState
+        
+        case LOAD_ONE_BUSINESS:
+          // newState = {...state}
+          // newEntries = {}
+          // action.businesses.forEach(business => newEntries[business.id] = business)
+          // newState.entries = newEntries
+          // return newState
+          return {
+            ...state,
+            businessObj: {
+              ...state[action.business.id],
+              ...action.business,
+            },
+          };
+        
+
         default:
             return state;
     }

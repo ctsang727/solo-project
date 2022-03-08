@@ -32,6 +32,9 @@ function App() {
           <Route path= '/businesses'>
             <BusinessDetail />
             </Route>
+          <Route path= '/business/:id'>
+            <BusinessDetail />
+            </Route>
         </Switch>
       
     </>
