@@ -10,7 +10,7 @@ router.get(
     '/businesses',
     asyncHandler(async function (req, res) {
       const businesses = await Business.findAll();
-      console.log('from the api', businesses)
+      //console.log('from the api', businesses)
       res.json(businesses);
     // const id = +req.params.id;
     // console.log('inside backend')
@@ -19,6 +19,17 @@ router.get(
      
 })
 );
+
+router.get(
+  '/:id',
+  asyncHandler(async function (req, res) {
+    const id = req.params.id
+    console.log('FROM API!!!!!!!!', id)
+    const business = await Business.findByPk(id);
+    return res.json(business);
+  })
+)
+
 
 module.exports = router;
 
