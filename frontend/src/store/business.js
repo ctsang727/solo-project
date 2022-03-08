@@ -1,35 +1,54 @@
-const GET_ONE = 'business/GET_ONE'
+const LOAD_BUSINESS = 'business/loadBusiness'
 
-const getOne = business => ({
-    type: GET_ONE,
-    business,
-})
+// const getOne = business => ({
+//     type: GET_ONE,
+//     business,
+// })
 
-export const getOneBusiness = id => async dispatch => {
-    const response = await fetch(`/api/businesses/${id}`);
-    const business = await response.json();
-    dispatch(getOne(business))
+export const loadBusiness = (businesses) => {
+  return { 
+    type: LOAD_BUSINESS, 
+    businesses
+  }
 }
 
-const initialState = {
-    id: 1
+//GET request thunk
+export const fetchBusinesses = () => async dispatch => {
+  const res = await fetch('/api/businesses')
+  console.log('RES', res)
+  const businesses = await res.json()
+  console.log('BUSINESS??', businesses)
+  dispatch(loadBusiness(businesses))
+  return loadBusiness
 }
-console.log('initialstate', initialState);
+
+
+const initialState = { entries: [], isLoading: true }
 
 const businessReducer = (state = initialState, action) => {
+  let newState;
+  let newEntries;
     switch(action.type) {
-        case GET_ONE:{
-            return {
-              ...state,
-              [action.business.id]: {
-                ...state[action.business.id],
-                ...action.business,
-              },
-            };
-          }
+        case LOAD_BUSINESS:
+          // return {
+          //   ...state,
+          //   entries: [...action.businesses]
+          // };
+          newState = {...state}
+          newEntries = {}
+          action.businesses.forEach(business => newEntries[business.id] = business)
+          newState.entries = newEntries
+          return newState
         default:
             return state;
     }
 }
 
 export default businessReducer;
+
+
+// export const getOneBusiness = id => async dispatch => {
+//     const response = await fetch(`/api/businesses/${id}`);
+//     const business = await response.json();
+//     dispatch(getOne(business))
+// }
