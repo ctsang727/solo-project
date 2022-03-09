@@ -3,19 +3,9 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import './Splashpage.css'
 import ProfileButton from '../Navigation/ProfileButton';
-
-//import { coverUrl } from '../../utilities/utils';
-
-/*    SPLASHPAGE COMPONENT
-  Create a simple splash page that displays a pokemon game cover
-    it should be 800px tall & centered on the page.
-    the game cover should be a link to the homepage.
-
-    coverURL: inside utils
-
-
-    
-*/
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchBusinesses } from '../../store/business';
 
 
 const styleLogin = {
@@ -32,7 +22,16 @@ const styleSignup = {
     borderRadius: '3px',
 }
 
-const Splashpage = ({ }) => {
+const Splashpage = () => {
+    console.log('on splash')
+    const dispatch = useDispatch();
+    //const businessList = useSelector((state) => Object.values(state.businessState))
+    
+    
+    useEffect(() => {
+        dispatch(fetchBusinesses()) 
+    }, [dispatch])
+
 
     const sessionUser = useSelector(state => state.session.user);
     let splashLinks;

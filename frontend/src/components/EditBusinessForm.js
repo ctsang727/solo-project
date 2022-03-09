@@ -6,10 +6,12 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 const EditBusinessForm = () => {
-    //const {id} = useParams();
+    const {id} = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
+    //const selectBusiness = useSelector((state) => state.businessState)
+    //console.log('@@@@####',selectBusiness)
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('')
@@ -24,6 +26,7 @@ const EditBusinessForm = () => {
         //const ownerId = sessionUser?.id
 
         const payload = {
+            id,
             title,
             description,
             address,

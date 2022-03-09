@@ -1,16 +1,16 @@
 import { csrfFetch } from "./csrf"
 
-const LOAD_BUSINESS = 'business/loadBusiness'
+const LOAD_BUSINESSES = 'business/loadBusinesses'
 const LOAD_ONE_BUSINESS = 'business/loadOneBusiness'
 const ADD_ONE = 'business/addBusiness'
 const UPDATE_ONE = 'business/editBusiness'
 
-// export const loadBusiness = (businesses) => {
-//   return { 
-//     type: LOAD_BUSINESS, 
-//     businesses
-//   }
-// }
+export const loadBusinesses = (businesses) => (
+  {
+    type: LOAD_BUSINESSES,
+    businesses
+  }
+)
 
 export const addBusiness = (newBusiness) => ({
   type: ADD_ONE,
@@ -31,14 +31,17 @@ const updateOne = business => ({
 
 
 //GET all business request thunk
-// export const fetchBusinesses = () => async dispatch => {
-//   const res = await csrfFetch('/api/business/businesses')
-//   console.log('RES', res)
-//   const businesses = await res.json()
-//   console.log('BUSINESS??', businesses)
-//   dispatch(loadBusiness(businesses))
-//   return loadBusiness
-// }
+export const fetchBusinesses = () => async dispatch => {
+  const res = await csrfFetch('/api/business/businesses')
+  console.log('RES', res)
+
+  if (res.ok){
+    const businesses = await res.json()
+    console.log('BUSINESS??', businesses)
+    dispatch(loadBusinesses(businesses))
+  }
+  
+}
 
 //GET one business thunk
 export const fetchOneBusiness = id => async dispatch => {
@@ -83,18 +86,24 @@ export const editBusiness = data => async dispatch => {
 }
 
 
-
-
 const businessReducer = (state = {}, action) => {
     //let newState = {...state}
     switch(action.type) {  
+        case LOAD_BUSINESSES:
+          const allBusinesses = {};
+          console.log('ACTION', action)
+          action.businesses.forEach(business => {
+            allBusinesses[business.id] = business; 
+          })
+
         case LOAD_ONE_BUSINESS:
           // newState[action.business.id] = action.business
           // return newState
+          console.log('333333333', action)
           return {
             ...state,
             businessObj: {
-              ...state[action.business.id],
+              ...state[action.business?.id],
               ...action.business,
             },
           };
