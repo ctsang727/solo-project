@@ -13,7 +13,7 @@ const NewBusinessForm = () => {
     //console.log(sessionUser?.id)
 
     //const [ownerId, setOwnerId] = useState(sessionUser)
-
+    const [id, setId] = useState('')
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('')
     const [address, setAddress] = useState('');
@@ -29,6 +29,7 @@ const NewBusinessForm = () => {
         e.preventDefault();
         const ownerId = sessionUser?.id
         const newBusiness = {
+            id,
             ownerId,
             title,
             description,
@@ -52,6 +53,11 @@ const NewBusinessForm = () => {
                 type='hidden'
                 name='ownerId'
                 ></input>
+                <input
+                type='hidden'
+                name='businessId'
+                value={id}>
+                </input>
                 <input
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}

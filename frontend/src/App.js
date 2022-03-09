@@ -37,7 +37,7 @@ function App() {
           <Route path= '/new'>
             <NewBusinessForm />
             </Route>
-          <Route path= '/business/:id/edit'>
+          <Route path= '/business/edit/:id'>
             <EditBusinessForm />
             </Route>
         </Switch>

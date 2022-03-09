@@ -3,8 +3,10 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { editBusiness } from "../store/business";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const EditBusinessForm = () => {
+    const {id} = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
@@ -22,7 +24,7 @@ const EditBusinessForm = () => {
         const ownerId = sessionUser?.id
 
         const payload = {
-            ownerId,
+            id,
             title,
             description,
             address,
@@ -32,7 +34,8 @@ const EditBusinessForm = () => {
         };
 
         const updatedBusiness = await dispatch(editBusiness(payload));
-        console.log(updatedBusiness)
+        console.log('11111111', updatedBusiness)
+        history.push(`/business/${id}`)
     };
     //cancel button later
 
@@ -40,10 +43,7 @@ const EditBusinessForm = () => {
         <div>
             <h1>Edit Business Form</h1>
             <form onSubmit={handleSubmit}>
-                <input
-                type='hidden'
-                name='ownerId'
-                ></input>
+                
                 <input
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}

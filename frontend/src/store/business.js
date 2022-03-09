@@ -42,6 +42,7 @@ const updateOne = business => ({
 
 //GET one business thunk
 export const fetchOneBusiness = id => async dispatch => {
+  console.log('GET ONE BIZ THUNK', id);
   const res = await csrfFetch(`/api/business/${id}`)
   const business = await res.json()
   dispatch(loadOneBusiness(business))
@@ -61,31 +62,35 @@ export const postBusiness = (data) => async dispatch => {
   return newBusiness;
 }
 
-export const editBusiness = (id) => async dispatch => {
-  const response = await csrfFetch(`/api/business/${id}/edit`, {
+//edit thunk
+export const editBusiness = data => async dispatch => {
+  console.log('IN THUNK EDIT', data);
+  const response = await csrfFetch(`/api/business/edit/${data.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(id),
+    body: JSON.stringify(data),
   });
 
   if (response.ok) {
-    const business = await response.json();
-    dispatch(updateOne(business));
-    return business;
+    const editedBusiness = await response.json();
+    dispatch(updateOne(editedBusiness));
+    console.log('BOTTOM EDIT THUNK', editedBusiness)
+    return editedBusiness;
   }
 
 }
 
 
-const initialState = { entries: ['test'], isLoading: true }
 
-const businessReducer = (state = initialState, action) => {
-  
+
+const businessReducer = (state = {}, action) => {
+    //let newState = {...state}
     switch(action.type) {  
-     
         case LOAD_ONE_BUSINESS:
+          // newState[action.business.id] = action.business
+          // return newState
           return {
             ...state,
             businessObj: {
@@ -101,6 +106,15 @@ const businessReducer = (state = initialState, action) => {
           newEntries[action.newBusiness.id] = action.newBusiness;
           newState.entries = newEntries
           return newState;
+        
+        case UPDATE_ONE:
+          return {
+            ...state,
+            [action.business.id]: {
+              ...state[action.business.id],
+              ...action.business,
+            },
+          };
 
         default:
             return state;
