@@ -6,19 +6,19 @@ const { Business } = require('../../db/models');
 
 const router = express.Router();
 
-//dont really need, this will find all businesses in db
-// router.get(
-//     '/businesses',
-//     asyncHandler(async function (req, res) {
-//       const businesses = await Business.findAll();
-//       //console.log('from the api', businesses)
-//       res.json(businesses);
-//     // const id = +req.params.id;
-//     // console.log('inside backend')
-//     // const business = await Business.scope('detailed').findByPk(id);
-//     // return res.json(business);
-// })
-// );
+//GET all businesses
+router.get(
+    '/businesses',
+    asyncHandler(async function (req, res) {
+      const businesses = await Business.findAll();
+      //console.log('from the api', businesses)
+      res.json(businesses);
+    // const id = +req.params.id;
+    // console.log('inside backend')
+    // const business = await Business.scope('detailed').findByPk(id);
+    // return res.json(business);
+})
+);
 
 //get single business
 router.get(
