@@ -29,7 +29,6 @@ const NewBusinessForm = () => {
         e.preventDefault();
         const ownerId = sessionUser?.id
         const newBusiness = {
-            id,
             ownerId,
             title,
             description,
@@ -38,11 +37,12 @@ const NewBusinessForm = () => {
             state,
             zipCode,
         }
-        console.log('NEWWWWWW', newBusiness)
+        
 
         dispatch(postBusiness(newBusiness))
+        console.log('NEW BIZ AFTER DISPATCH', newBusiness)
 
-        history.push('/business/new')
+        history.push(`/`)
     }
 
     return (

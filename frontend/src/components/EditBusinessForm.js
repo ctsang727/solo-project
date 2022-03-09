@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 const EditBusinessForm = () => {
-    const {id} = useParams();
+    //const {id} = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
@@ -21,10 +21,9 @@ const EditBusinessForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const ownerId = sessionUser?.id
+        //const ownerId = sessionUser?.id
 
         const payload = {
-            id,
             title,
             description,
             address,
@@ -35,7 +34,7 @@ const EditBusinessForm = () => {
 
         const updatedBusiness = await dispatch(editBusiness(payload));
         console.log('11111111', updatedBusiness)
-        history.push(`/business/${id}`)
+        // history.push(`/business/${id}`)
     };
     //cancel button later
 
