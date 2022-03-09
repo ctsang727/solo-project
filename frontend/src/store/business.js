@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf"
 const LOAD_BUSINESS = 'business/loadBusiness'
 const LOAD_ONE_BUSINESS = 'business/loadOneBusiness'
 const ADD_ONE = 'business/addBusiness'
+const UPDATE_ONE = 'business/editBusiness'
 
 // export const loadBusiness = (businesses) => {
 //   return { 
@@ -22,6 +23,12 @@ export const loadOneBusiness = (business) => {
     business
   }
 }
+
+const updateOne = business => ({
+  type: UPDATE_ONE,
+  business,
+});
+
 
 //GET all business request thunk
 // export const fetchBusinesses = () => async dispatch => {
@@ -52,6 +59,23 @@ export const postBusiness = (data) => async dispatch => {
   console.log('NEWBIZ BOTTOM THUNK', newBusiness)
   dispatch(addBusiness(newBusiness))
   return newBusiness;
+}
+
+export const editBusiness = (id) => async dispatch => {
+  const response = await csrfFetch(`/api/business/${id}/edit`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(id),
+  });
+
+  if (response.ok) {
+    const business = await response.json();
+    dispatch(updateOne(business));
+    return business;
+  }
+
 }
 
 
