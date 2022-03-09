@@ -33,12 +33,13 @@ const updateOne = business => ({
 //GET all business request thunk
 export const fetchBusinesses = () => async dispatch => {
   const res = await csrfFetch('/api/business/businesses')
-  console.log('RES', res)
+  //console.log('RES', res)
 
   if (res.ok){
     const businesses = await res.json()
-    console.log('BUSINESS??', businesses)
+    //console.log('BUSINESS??', businesses)
     dispatch(loadBusinesses(businesses))
+    return businesses;
   }
   
 }
@@ -91,15 +92,15 @@ const businessReducer = (state = {}, action) => {
     switch(action.type) {  
         case LOAD_BUSINESSES:
           const allBusinesses = {};
-          console.log('ACTION', action)
+          //console.log('ACTION', action)
           action.businesses.forEach(business => {
             allBusinesses[business.id] = business; 
           })
+          return allBusinesses;
 
         case LOAD_ONE_BUSINESS:
           // newState[action.business.id] = action.business
           // return newState
-          console.log('333333333', action)
           return {
             ...state,
             businessObj: {

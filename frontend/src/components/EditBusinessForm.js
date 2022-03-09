@@ -4,21 +4,28 @@ import { useHistory } from "react-router-dom";
 import { editBusiness } from "../store/business";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { fetchBusinesses } from "../store/business";
 
 const EditBusinessForm = () => {
+    console.log('on edit form page')
     const {id} = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    //const selectBusiness = useSelector((state) => state.businessState)
-    //console.log('@@@@####',selectBusiness)
 
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('')
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('Alabama');
-    const [zipCode, setZipCode] = useState('');
+    const selectBusiness = useSelector((state) => state.businessState)
+    console.log('@@@@####', selectBusiness[id])
+
+    useEffect(() => {
+        dispatch(fetchBusinesses()) 
+    }, [dispatch])
+
+    const [title, setTitle] = useState(selectBusiness[id]?.title);
+    const [description, setDescription] = useState(selectBusiness[id]?.description)
+    const [address, setAddress] = useState(selectBusiness[id]?.address);
+    const [city, setCity] = useState(selectBusiness[id]?.city);
+    const [state, setState] = useState(selectBusiness[id]?.state);
+    const [zipCode, setZipCode] = useState(selectBusiness[id]?.zipCode);
 
 
     const handleSubmit = async (e) => {

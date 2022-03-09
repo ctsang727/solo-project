@@ -25,8 +25,8 @@ const styleSignup = {
 const Splashpage = () => {
     console.log('on splash')
     const dispatch = useDispatch();
-    //const businessList = useSelector((state) => Object.values(state.businessState))
-    
+    const businessList = useSelector((state) => state.businessState)
+    //console.log('LLLLLLLLLLLL', businessList)
     
     useEffect(() => {
         dispatch(fetchBusinesses()) 
