@@ -44,7 +44,7 @@ router.put(
   '/edit/:id',
   asyncHandler(async function (req, res) {
     const id = req.body
-    console.log('HHEELLOOO???', id);
+    console.log('THIS IS REQ.BODY', id);
     await Business.update(req.body, {
       where: { id },
       returning: true,
