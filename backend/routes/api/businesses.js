@@ -41,9 +41,9 @@ router.post(
 
 //edit business
 router.put(
-  '/:id/edit',
+  '/edit/:id',
   asyncHandler(async function (req, res) {
-    const id = req.params.id
+    const id = req.body
     console.log('HHEELLOOO???', id);
     await Business.update(req.body, {
       where: { id },
@@ -51,7 +51,8 @@ router.put(
       
     });
 
-    const business = await Business.findByPk(id);
+    const editbusiness = await Business.findByPk(id);
+    console.log('@@@@@@@',editbusiness)
 
     return res.json(business);
   })
