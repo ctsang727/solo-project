@@ -115,7 +115,7 @@ const Splashpage = () => {
                     <div className='filler'></div>
                     <div className='below-photo'>
                         {businessArray.map(business => (
-                            <span >
+                            <span>
                                 <Link to={`/business/${business.id}`} style={styleBusinessLinks}>{business.title}</Link>
                                 <p>{business.description}</p>
                             </span>

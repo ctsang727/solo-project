@@ -7,7 +7,7 @@ import Navigation from "./components/Navigation";
 import * as sessionActions from "./store/session";
 import Splashpage from "./components/SplashPage/";
 import BusinessDetail from "./components/BusinessDetail";
-import NewBusinessForm from "./components/NewBusinessForm";
+import NewBusinessForm from "./components/NewBusinessFolder/NewBusinessForm";
 import EditBusinessForm from "./components/EditBusinessForm";
 
 function App() {
