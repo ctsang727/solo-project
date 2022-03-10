@@ -164,23 +164,3 @@ const businessReducer = (state = {}, action) => {
 
 export default businessReducer;
 
-
-//this will load all businesses
-// let newState;
-//   let newEntries;
-        // case LOAD_BUSINESS:
-        //   // return {
-        //   //   ...state,
-        //   //   entries: [...action.businesses]
-        //   // };
-        //   newState = {...state}
-        //   newEntries = {}
-        //   action.businesses.forEach(business => newEntries[business.id] = business)
-        //   newState.entries = newEntries
-        //   return newState
-
-// export const getOneBusiness = id => async dispatch => {
-//     const response = await fetch(`/api/businesses/${id}`);
-//     const business = await response.json();
-//     dispatch(getOne(business))
-// }
