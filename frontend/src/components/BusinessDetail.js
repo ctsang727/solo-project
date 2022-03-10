@@ -11,15 +11,16 @@ import { deleteBusiness } from '../store/business';
 const BusinessDetail = () => {
     //console.log('are we here?')
     const dispatch = useDispatch();
-    const  businessId  = useParams();
+    const  {id}  = useParams();
+    // console.log(typeof +id)
 
-    const business = useSelector((state) => state.businessState.businessObj)
+    const business = useSelector((state) => state.businessState[id])
     console.log('BUSINESS FRONTEND', business)
     // const businessObject = business.businessObj
 
     useEffect(() => {
-        dispatch(fetchOneBusiness(businessId.id))
-    },[dispatch,businessId.id])
+        dispatch(fetchOneBusiness(+id))
+    },[dispatch,+id])
 
     const handleDelete = (e) => {
         e.preventDefault();

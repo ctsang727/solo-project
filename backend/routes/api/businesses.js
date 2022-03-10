@@ -18,10 +18,10 @@ router.get(
 
 //get single business
 router.get(
-  '/:id(\\d+)',
+  '/:id',
   asyncHandler(async function (req, res) {
-    const id = req.params.id
-    //console.log('FROM API!!!!!!!!', id)
+    const id = +req.params.id
+    // console.log('FROM API!!!!!!!!', id)
     const business = await Business.findByPk(id);
     return res.json(business);
   })
@@ -53,13 +53,17 @@ router.put(
 router.delete(
   '/:id',
   asyncHandler(async function (req, res) {
-    const id = +req.params.id 
-    console.log('IN API', id)
-    const deletebusiness = await Business.destroy({
-      where: { id: id }
-    });
-    console.log('INNSIDE API', deletebusiness)
-    return res.json(deletebusiness)
+    const business = await Business.findByPk(req.params.id)
+    await Business.destroy ({ where: {id: business.id }})
+    return res.json({ id: business.id })
+    
+    // const id = +req.params.id 
+    // console.log('IN API', id)
+    // const deletebusiness = await Business.destroy({
+    //   where: { id: id }
+    // });
+    // console.log('INNSIDE API', deletebusiness)
+    // return res.json(deletebusiness)
     
   })
 )

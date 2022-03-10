@@ -52,7 +52,7 @@ export const fetchBusinesses = () => async dispatch => {
 
 //GET one business thunk
 export const fetchOneBusiness = id => async dispatch => {
- // console.log('GET ONE BIZ THUNK', id);
+  console.log('GET ONE BIZ THUNK', id);
   const res = await csrfFetch(`/api/business/${id}`)
   const business = await res.json()
   dispatch(loadOneBusiness(business))
@@ -125,10 +125,11 @@ const businessReducer = (state = {}, action) => {
           return {
 
             ...state,
-            businessObj: {
-              ...state[action.business?.id],
-              ...action.business,
-            },
+            [action.business.id]: action.business
+            // businessObj: {
+            //   ...state[action.business?.id],
+            //   ...action.business,
+            // },
           };
         case ADD_ONE:
           let newState;
@@ -143,10 +144,17 @@ const businessReducer = (state = {}, action) => {
           };
 
         case REMOVE_BUSINESS:
-          const newNewState = {...state};
-          delete newNewState[action.business.id]
-          console.log('FROM REDUCER', newNewState)
-          return newNewState;
+          // const newNewState = {...state};
+          // console.log('FROM REDUCER', newNewState)
+          // delete newNewState[action.business.id]
+          // console.log('FROM REDUCER AGAIN', newNewState)
+          // return newNewState;
+
+          return {
+            ...state,
+            [action.business.id]: action.business
+          }
+
 
 
         default:
@@ -156,23 +164,3 @@ const businessReducer = (state = {}, action) => {
 
 export default businessReducer;
 
-
-//this will load all businesses
-// let newState;
-//   let newEntries;
-        // case LOAD_BUSINESS:
-        //   // return {
-        //   //   ...state,
-        //   //   entries: [...action.businesses]
-        //   // };
-        //   newState = {...state}
-        //   newEntries = {}
-        //   action.businesses.forEach(business => newEntries[business.id] = business)
-        //   newState.entries = newEntries
-        //   return newState
-
-// export const getOneBusiness = id => async dispatch => {
-//     const response = await fetch(`/api/businesses/${id}`);
-//     const business = await response.json();
-//     dispatch(getOne(business))
-// }
