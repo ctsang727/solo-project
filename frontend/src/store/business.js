@@ -149,11 +149,9 @@ const businessReducer = (state = {}, action) => {
           // delete newNewState[action.business.id]
           // console.log('FROM REDUCER AGAIN', newNewState)
           // return newNewState;
-
-          return {
-            ...state,
-            [action.business.id]: action.business
-          }
+          let removeState = {...state}
+          delete removeState[action.business.id]
+          return removeState
 
 
 
