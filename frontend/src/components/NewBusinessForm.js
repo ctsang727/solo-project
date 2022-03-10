@@ -28,7 +28,7 @@ const NewBusinessForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const ownerId = sessionUser?.id
-        const newBusiness = {
+        const business = {
             ownerId,
             title,
             description,
@@ -39,8 +39,8 @@ const NewBusinessForm = () => {
         }
         
 
-        dispatch(postBusiness(newBusiness))
-        console.log('NEW BIZ AFTER DISPATCH', newBusiness)
+        dispatch(postBusiness(business))
+        console.log('NEW BIZ AFTER DISPATCH', business)
 
         history.push(`/`)
     }

@@ -53,12 +53,12 @@ export const fetchOneBusiness = id => async dispatch => {
 }
 
 //POST new business thunk
-export const postBusiness = (data) => async dispatch => {
+export const postBusiness = business => async dispatch => {
   console.log('in THUNK')
   const res = await csrfFetch('/api/business/new', {
     method: 'POST',
     headers: { "Content-Type": "application/json", },
-    body: JSON.stringify(data)
+    body: JSON.stringify(business)
   })
   const newBusiness = await res.json()
   console.log('NEWBIZ BOTTOM THUNK', newBusiness)
@@ -110,20 +110,14 @@ const businessReducer = (state = {}, action) => {
           };
         case ADD_ONE:
           let newState;
-          let newEntries;
           newState={...state}
-          newEntries={...state.entries}
-          newEntries[action.newBusiness.id] = action.newBusiness;
-          newState.entries = newEntries
+          newState[action.newBusiness.id] = action.newBusiness;
           return newState;
         
         case UPDATE_ONE:
           return {
             ...state,
-            [action.business.id]: {
-              ...state[action.business.id],
-              ...action.business,
-            },
+            [action.business.id]: action.business,
           };
 
         default:

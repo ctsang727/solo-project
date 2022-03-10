@@ -33,7 +33,7 @@ const EditBusinessForm = () => {
         //const ownerId = sessionUser?.id
 
         const payload = {
-            id,
+            id: +id,
             title,
             description,
             address,
