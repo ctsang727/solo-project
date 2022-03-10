@@ -1,67 +1,62 @@
-import { useDispatch } from "react-redux"
-import { postBusiness } from "../store/business";
-import { useState, } from "react";
+import { useEffect, useState, } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { editBusiness } from "../store/business";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { fetchBusinesses } from "../store/business";
 
-
-const NewBusinessForm = () => {
-    //console.log('Start of front end')
+const EditBusinessForm = () => {
+    //console.log('on edit form page')
+    const {id} = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    //console.log(sessionUser?.id)
 
-    //const [ownerId, setOwnerId] = useState(sessionUser)
-    const [id, setId] = useState('')
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('')
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('Alabama');
-    const [zipCode, setZipCode] = useState('');
-    //will have to update model
-    //country?
-    //phone?
-    //many locations?
+    const selectBusiness = useSelector((state) => state.businessState)
+    //console.log('@@@@####', selectBusiness[id])
 
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        dispatch(fetchBusinesses()) 
+    }, [dispatch])
+
+    const [title, setTitle] = useState(selectBusiness[id]?.title);
+    const [description, setDescription] = useState(selectBusiness[id]?.description)
+    const [address, setAddress] = useState(selectBusiness[id]?.address);
+    const [city, setCity] = useState(selectBusiness[id]?.city);
+    const [state, setState] = useState(selectBusiness[id]?.state);
+    const [zipCode, setZipCode] = useState(selectBusiness[id]?.zipCode);
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const ownerId = sessionUser?.id
-        const business = {
-            ownerId,
+        //const ownerId = sessionUser?.id
+
+        const payload = {
+            id: +id,
             title,
             description,
             address,
             city,
             state,
             zipCode,
-        }
-        
+        };
 
-        dispatch(postBusiness(business))
-        console.log('NEW BIZ AFTER DISPATCH', business)
-
-        history.push(`/`)
-    }
+        const updatedBusiness = await dispatch(editBusiness(payload));
+        //console.log('11111111', updatedBusiness)
+        // history.push(`/business/${id}`)
+    };
+    //cancel button later
 
     return (
         <div>
-            <h1>New Business Form</h1>
+            <h1>Edit Business Form</h1>
             <form onSubmit={handleSubmit}>
-                <input
-                type='hidden'
-                name='ownerId'
-                ></input>
-                <input
-                type='hidden'
-                name='businessId'
-                value={id}>
-                </input>
+                
                 <input
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
-                    placeholder='Name of Business'
+                    placeholder='Name of Business'  
                     name='title' />
                 <input
                     onChange={(e) => setDescription(e.target.value)}
@@ -148,6 +143,7 @@ const NewBusinessForm = () => {
         </div>
     )
 
+
 }
 
-export default NewBusinessForm
+export default EditBusinessForm;

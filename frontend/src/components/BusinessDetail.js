@@ -8,12 +8,13 @@ import { useDispatch } from 'react-redux';
 
 
 const BusinessDetail = () => {
-    console.log('are we here?')
+    //console.log('are we here?')
     const dispatch = useDispatch();
     const  businessId  = useParams();
 
-    const business = useSelector((state) => state.businessState)
-     const businessObject = business.businessObj
+    const business = useSelector((state) => state.businessState.businessObj)
+    //console.log(business)
+    // const businessObject = business.businessObj
 
     useEffect(() => {
         dispatch(fetchOneBusiness(businessId.id))
@@ -23,9 +24,8 @@ const BusinessDetail = () => {
 
     return (
         <div>
-            <h2>{`${businessObject?.title}`}</h2>
-            <p>{`${businessObject?.description}`}</p>
-            
+            <h2>{`${business?.title}`}</h2>
+            <p>{`${business?.description}`}</p>
         </div>
     )
 }

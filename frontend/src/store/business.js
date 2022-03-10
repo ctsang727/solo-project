@@ -1,15 +1,16 @@
 import { csrfFetch } from "./csrf"
 
-const LOAD_BUSINESS = 'business/loadBusiness'
+const LOAD_BUSINESSES = 'business/loadBusinesses'
 const LOAD_ONE_BUSINESS = 'business/loadOneBusiness'
 const ADD_ONE = 'business/addBusiness'
+const UPDATE_ONE = 'business/editBusiness'
 
-// export const loadBusiness = (businesses) => {
-//   return { 
-//     type: LOAD_BUSINESS, 
-//     businesses
-//   }
-// }
+export const loadBusinesses = (businesses) => (
+  {
+    type: LOAD_BUSINESSES,
+    businesses
+  }
+)
 
 export const addBusiness = (newBusiness) => ({
   type: ADD_ONE,
@@ -23,60 +24,101 @@ export const loadOneBusiness = (business) => {
   }
 }
 
+const updateOne = business => ({
+  type: UPDATE_ONE,
+  business,
+});
+
+
 //GET all business request thunk
-// export const fetchBusinesses = () => async dispatch => {
-//   const res = await csrfFetch('/api/business/businesses')
-//   console.log('RES', res)
-//   const businesses = await res.json()
-//   console.log('BUSINESS??', businesses)
-//   dispatch(loadBusiness(businesses))
-//   return loadBusiness
-// }
+export const fetchBusinesses = () => async dispatch => {
+  const res = await csrfFetch('/api/business/businesses')
+  //console.log('RES', res)
+
+  if (res.ok){
+    const businesses = await res.json()
+    //console.log('BUSINESS??', businesses)
+    dispatch(loadBusinesses(businesses))
+    return businesses;
+  }
+  
+}
 
 //GET one business thunk
 export const fetchOneBusiness = id => async dispatch => {
+ // console.log('GET ONE BIZ THUNK', id);
   const res = await csrfFetch(`/api/business/${id}`)
   const business = await res.json()
   dispatch(loadOneBusiness(business))
 }
 
 //POST new business thunk
-export const postBusiness = (data) => async dispatch => {
-  console.log('in THUNK')
+export const postBusiness = business => async dispatch => {
+  //console.log('in THUNK')
   const res = await csrfFetch('/api/business/new', {
     method: 'POST',
     headers: { "Content-Type": "application/json", },
-    body: JSON.stringify(data)
+    body: JSON.stringify(business)
   })
   const newBusiness = await res.json()
-  console.log('NEWBIZ BOTTOM THUNK', newBusiness)
+  //console.log('NEWBIZ BOTTOM THUNK', newBusiness)
   dispatch(addBusiness(newBusiness))
   return newBusiness;
 }
 
+//edit thunk
+export const editBusiness = data => async dispatch => {
+  //console.log('IN THUNK EDIT', data);
+  const response = await csrfFetch(`/api/business/edit/${data.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
 
-const initialState = { entries: ['test'], isLoading: true }
+  if (response.ok) {
+    const editedBusiness = await response.json();
+    dispatch(updateOne(editedBusiness));
+    //console.log('BOTTOM EDIT THUNK', editedBusiness)
+    return editedBusiness;
+  }
 
-const businessReducer = (state = initialState, action) => {
-  
+}
+
+
+const businessReducer = (state = {}, action) => {
+    //let newState = {...state}
     switch(action.type) {  
-     
+        case LOAD_BUSINESSES:
+          const allBusinesses = {};
+          //console.log('ACTION', action)
+          action.businesses.forEach(business => {
+            allBusinesses[business.id] = business; 
+          })
+          return allBusinesses;
+
         case LOAD_ONE_BUSINESS:
+          // newState[action.business.id] = action.business
+          // return newState
           return {
             ...state,
             businessObj: {
-              ...state[action.business.id],
+              ...state[action.business?.id],
               ...action.business,
             },
           };
         case ADD_ONE:
           let newState;
-          let newEntries;
           newState={...state}
-          newEntries={...state.entries}
-          newEntries[action.newBusiness.id] = action.newBusiness;
-          newState.entries = newEntries
+          newState[action.newBusiness.id] = action.newBusiness;
           return newState;
+        
+        case UPDATE_ONE:
+          return {
+            ...state,
+            [action.business.id]: action.business,
+          };
 
         default:
             return state;

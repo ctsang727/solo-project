@@ -6,26 +6,22 @@ const { Business } = require('../../db/models');
 
 const router = express.Router();
 
-//dont really need, this will find all businesses in db
-// router.get(
-//     '/businesses',
-//     asyncHandler(async function (req, res) {
-//       const businesses = await Business.findAll();
-//       //console.log('from the api', businesses)
-//       res.json(businesses);
-//     // const id = +req.params.id;
-//     // console.log('inside backend')
-//     // const business = await Business.scope('detailed').findByPk(id);
-//     // return res.json(business);
-// })
-// );
+//GET all businesses
+router.get(
+    '/businesses',
+    asyncHandler(async function (req, res) {
+      const businesses = await Business.findAll();
+      //console.log('from the api', businesses)
+      res.json(businesses);
+})
+);
 
 //get single business
 router.get(
   '/:id(\\d+)',
   asyncHandler(async function (req, res) {
     const id = req.params.id
-    console.log('FROM API!!!!!!!!', id)
+    //console.log('FROM API!!!!!!!!', id)
     const business = await Business.findByPk(id);
     return res.json(business);
   })
@@ -34,28 +30,32 @@ router.get(
 
 router.post(
   '/new', asyncHandler(async (req, res) => {
-    console.log('INSIDE POST ROUTE')
+    //console.log('INSIDE POST ROUTE')
     const business = await Business.create(req.body);
-    res.json(business);
+    return res.json(business);
   }));
 
 //edit business
-// router.put(
-//   '/:id',
-//   asyncHandler(async function (req, res) {
-//     const id = req.body.id;
-//     delete req.body.id;
-//     await Business.update(req.body, {
-//       where: { id },
-//       returning: true,
-//       plain: true,
-//     });
+router.put(
+  '/edit/:id',
+  asyncHandler(async function (req, res) {
+    const id = parseInt(req.params.id)
+    //console.log('THIS IS REQ.BODY', id);
+    // const editbusiness = await Business.findByPk(id);
+    
 
-//     const business = await Business.findByPk(id);
+    const editbusiness = await Business.update(req.body, {
+      where: { id },
+      returning: true, //makes query return number of rows edited and edited row
+      
+    });
 
-//     return res.json(business);
-//   })
-// );
+    //console.log(`\n\n\n\n\n\n`, editbusiness)
+    
+
+    return res.json(editbusiness);
+  })
+);
 
 
 module.exports = router;
