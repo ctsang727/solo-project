@@ -37,8 +37,18 @@ const Splashpage = () => {
     let splashLinks;
     if (sessionUser) {
         splashLinks = (
-            <ProfileButton user={sessionUser} />
-         
+            <><nav>
+                <ul className='splash-ul'>
+                    <li>Write a Review</li>
+                    <li>For Businesses</li>
+                    <li></li>
+                    <li></li>
+                    <ProfileButton user={sessionUser} />
+                </ul>
+            </nav></>
+                
+          
+
         );
     } else {
         splashLinks = (

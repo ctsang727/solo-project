@@ -27,6 +27,7 @@ function LoginFormPage() {
 
     const demoSubmit = (e) => {
         e.preventDefault();
+        console.log('test')
         const credential = 'demo@user.io'
         const password = 'password'
         return dispatch(sessionActions.login({ credential, password }));
