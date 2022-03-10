@@ -29,7 +29,7 @@ const NewBusinessForm = () => {
     //will have to update model
     //country?
     //phone?
-    //many locations?
+    //many locations?   
 
     useEffect(() => {
         const errors = []
