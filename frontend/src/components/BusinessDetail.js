@@ -26,7 +26,6 @@ const BusinessDetail = () => {
         <div>
             <h2>{`${business?.title}`}</h2>
             <p>{`${business?.description}`}</p>
-            
         </div>
     )
 }
