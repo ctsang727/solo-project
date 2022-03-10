@@ -40,23 +40,29 @@ router.put(
   '/edit/:id',
   asyncHandler(async function (req, res) {
     const id = parseInt(req.params.id)
-    //console.log('THIS IS REQ.BODY', id);
-    // const editbusiness = await Business.findByPk(id);
-    
-
     const editbusiness = await Business.update(req.body, {
       where: { id },
       returning: true, //makes query return number of rows edited and edited row
       
     });
-
-    //console.log(`\n\n\n\n\n\n`, editbusiness)
-    
-
     return res.json(editbusiness);
   })
 );
 
+//delete business
+router.delete(
+  '/:id',
+  asyncHandler(async function (req, res) {
+    const id = +req.params.id 
+    console.log('IN API', id)
+    const deletebusiness = await Business.destroy({
+      where: { id: id }
+    });
+    console.log('INNSIDE API', deletebusiness)
+    return res.json(deletebusiness)
+    
+  })
+)
 
 module.exports = router;
 
