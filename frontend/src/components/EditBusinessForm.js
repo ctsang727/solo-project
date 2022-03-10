@@ -7,14 +7,14 @@ import { useParams } from "react-router-dom";
 import { fetchBusinesses } from "../store/business";
 
 const EditBusinessForm = () => {
-    console.log('on edit form page')
+    //console.log('on edit form page')
     const {id} = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
 
     const selectBusiness = useSelector((state) => state.businessState)
-    console.log('@@@@####', selectBusiness[id])
+    //console.log('@@@@####', selectBusiness[id])
 
     useEffect(() => {
         dispatch(fetchBusinesses()) 
@@ -43,7 +43,7 @@ const EditBusinessForm = () => {
         };
 
         const updatedBusiness = await dispatch(editBusiness(payload));
-        console.log('11111111', updatedBusiness)
+        //console.log('11111111', updatedBusiness)
         // history.push(`/business/${id}`)
     };
     //cancel button later

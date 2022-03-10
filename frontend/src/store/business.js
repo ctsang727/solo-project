@@ -46,7 +46,7 @@ export const fetchBusinesses = () => async dispatch => {
 
 //GET one business thunk
 export const fetchOneBusiness = id => async dispatch => {
-  console.log('GET ONE BIZ THUNK', id);
+ // console.log('GET ONE BIZ THUNK', id);
   const res = await csrfFetch(`/api/business/${id}`)
   const business = await res.json()
   dispatch(loadOneBusiness(business))
@@ -54,21 +54,21 @@ export const fetchOneBusiness = id => async dispatch => {
 
 //POST new business thunk
 export const postBusiness = business => async dispatch => {
-  console.log('in THUNK')
+  //console.log('in THUNK')
   const res = await csrfFetch('/api/business/new', {
     method: 'POST',
     headers: { "Content-Type": "application/json", },
     body: JSON.stringify(business)
   })
   const newBusiness = await res.json()
-  console.log('NEWBIZ BOTTOM THUNK', newBusiness)
+  //console.log('NEWBIZ BOTTOM THUNK', newBusiness)
   dispatch(addBusiness(newBusiness))
   return newBusiness;
 }
 
 //edit thunk
 export const editBusiness = data => async dispatch => {
-  console.log('IN THUNK EDIT', data);
+  //console.log('IN THUNK EDIT', data);
   const response = await csrfFetch(`/api/business/edit/${data.id}`, {
     method: 'PUT',
     headers: {
@@ -80,7 +80,7 @@ export const editBusiness = data => async dispatch => {
   if (response.ok) {
     const editedBusiness = await response.json();
     dispatch(updateOne(editedBusiness));
-    console.log('BOTTOM EDIT THUNK', editedBusiness)
+    //console.log('BOTTOM EDIT THUNK', editedBusiness)
     return editedBusiness;
   }
 
