@@ -9,6 +9,7 @@ import { fetchBusinesses } from "../store/business";
 const EditBusinessForm = () => {
     //console.log('on edit form page')
     const {id} = useParams();
+    console.log(id)
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
