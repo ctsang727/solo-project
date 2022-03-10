@@ -4,6 +4,7 @@ const LOAD_BUSINESSES = 'business/loadBusinesses'
 const LOAD_ONE_BUSINESS = 'business/loadOneBusiness'
 const ADD_ONE = 'business/addBusiness'
 const UPDATE_ONE = 'business/editBusiness'
+const REMOVE_BUSINESS = 'business/deleteBusiness'
 
 export const loadBusinesses = (businesses) => (
   {
@@ -28,6 +29,11 @@ const updateOne = business => ({
   type: UPDATE_ONE,
   business,
 });
+
+const removeBusiness = business => ({
+  type: REMOVE_BUSINESS,
+  business
+})
 
 
 //GET all business request thunk
@@ -83,7 +89,22 @@ export const editBusiness = data => async dispatch => {
     //console.log('BOTTOM EDIT THUNK', editedBusiness)
     return editedBusiness;
   }
+}
 
+//delete thunk
+export const deleteBusiness = business => async dispatch => {
+  console.log('THUNK', business, 'ID', business.id)
+  const response = await csrfFetch(`/api/business/${business.id}`,
+  {
+    method: 'DELETE',
+  });
+  if (response.ok) {
+    console.log('RESPONSE OK AND DELETED')
+    const deletedBusiness = await response.json();
+    dispatch(removeBusiness(deletedBusiness))
+    console.log('DELETED FOR SURE', deletedBusiness)
+    return deletedBusiness;
+  }
 }
 
 
@@ -102,6 +123,7 @@ const businessReducer = (state = {}, action) => {
           // newState[action.business.id] = action.business
           // return newState
           return {
+
             ...state,
             businessObj: {
               ...state[action.business?.id],
@@ -119,6 +141,13 @@ const businessReducer = (state = {}, action) => {
             ...state,
             [action.business.id]: action.business,
           };
+
+        case REMOVE_BUSINESS:
+          const newNewState = {...state};
+          delete newNewState[action.business.id]
+          console.log('FROM REDUCER', newNewState)
+          return newNewState;
+
 
         default:
             return state;
