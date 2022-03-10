@@ -36,25 +36,28 @@ router.post(
   '/new', asyncHandler(async (req, res) => {
     console.log('INSIDE POST ROUTE')
     const business = await Business.create(req.body);
-    res.json(business);
+    return res.json(business);
   }));
 
 //edit business
 router.put(
   '/edit/:id',
   asyncHandler(async function (req, res) {
-    const id = req.body
+    const id = parseInt(req.params.id)
     console.log('THIS IS REQ.BODY', id);
-    await Business.update(req.body, {
+    // const editbusiness = await Business.findByPk(id);
+    
+
+    const editbusiness = await Business.update(req.body, {
       where: { id },
       returning: true,
       
     });
 
-    const editbusiness = await Business.findByPk(id);
-    console.log('@@@@@@@',editbusiness)
+    console.log(`\n\n\n\n\n\n`, editbusiness)
+    
 
-    return res.json(business);
+    return res.json(editbusiness);
   })
 );
 
