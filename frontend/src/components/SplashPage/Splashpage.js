@@ -6,6 +6,7 @@ import ProfileButton from '../Navigation/ProfileButton';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchBusinesses } from '../../store/business';
+import { useHistory } from 'react-router-dom';
 
 
 const styleLogin = {
@@ -22,14 +23,25 @@ const styleSignup = {
     borderRadius: '3px',
 }
 
+const styleBusinessLinks = {
+    color: 'black',
+    fontSize: '20px',
+    textDecoration: 'none',
+}
+
 const Splashpage = () => {
     console.log('on splash')
+    const history = useHistory();
     const dispatch = useDispatch();
     const businessList = useSelector((state) => state.businessState)
-    //console.log('LLLLLLLLLLLL', businessList)
-    
+    const businessArray = Object.values(businessList)
+    console.log(businessArray)
+    console.log(businessList);
+
+
+
     useEffect(() => {
-        dispatch(fetchBusinesses()) 
+        dispatch(fetchBusinesses())
     }, [dispatch])
 
 
@@ -40,14 +52,14 @@ const Splashpage = () => {
             <><nav>
                 <ul className='splash-ul'>
                     <li>Write a Review</li>
-                    <li>For Businesses</li>
+                    <li><Link to='/new' style={styleLogin}>Add a Business</Link></li>
                     <li></li>
                     <li></li>
                     <ProfileButton user={sessionUser} />
                 </ul>
             </nav></>
-                
-          
+
+
 
         );
     } else {
@@ -55,7 +67,9 @@ const Splashpage = () => {
             <nav>
                 <ul className='splash-ul'>
                     <li>Write a Review</li>
-                    <li>For Businesses</li>
+                    <li>
+                        <Link to='/new' style={styleLogin}>Add a Business</Link>
+                    </li>
                     <li></li>
                     <li>
                         <Link to='/login' style={styleLogin}>Log In</Link>
@@ -82,10 +96,7 @@ const Splashpage = () => {
                         <div></div>
                     </div>
                     <div className='splash-logo'>
-
                         <img className='yelp-logo' src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Yelp_Logo.svg/2560px-Yelp_Logo.svg.png'></img>
-
-
                     </div>
                     <div className='splash-search'>
                         <input className='splash-search-bar'></input>
@@ -99,6 +110,18 @@ const Splashpage = () => {
                             <li>Black Owned</li>
                         </ul>
                     </div>
+                </div>
+                <div className='below-photo-container'>
+                    <div className='filler'></div>
+                    <div className='below-photo'>
+                        {businessArray.map(business => (
+                            <span >
+                                <Link to={`/business/${business.id}`} style={styleBusinessLinks}>{business.title}</Link>
+                                <p>{business.description}</p>
+                            </span>
+                        ))}
+                    </div>
+                    <div className='filler'></div>
                 </div>
             </div>
 
