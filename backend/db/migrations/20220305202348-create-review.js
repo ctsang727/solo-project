@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      answer: {
+      review: {
         allowNull: false,
         type: Sequelize.TEXT
       },

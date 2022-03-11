@@ -28,4 +28,19 @@ router.get(
     })
 )
 
+//post new review for a business
+router.post(
+    '/new/:id', 
+    asyncHandler(async (req, res) => {
+        console.log('INSIDE API')
+        const review = await Review.create(req.body);
+        return res.json(review);
+    })
+);
+
+
+//update review for a business
+
+//delete review 
+
 module.exports = router;
