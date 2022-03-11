@@ -49,6 +49,9 @@ const BusinessDetail = () => {
             
             <h2>{`${business?.title}`}</h2>
             <p>{`${business?.description}`}</p>
+            <p>{`${business?.address}`}</p>
+            <p>{`${business?.city}`}</p>
+            <p>{`${business?.zipCode}`}</p>
             {businessDetailHTML}
             
         </div>
