@@ -15,9 +15,9 @@ const BusinessDetail = () => {
     const history = useHistory();
     // console.log(typeof +id)
     const sessionUser = useSelector(state => state.session.user)
-    console.log('USER', sessionUser)
+    //console.log('USER', sessionUser)
     const business = useSelector((state) => state.businessState[id])
-    console.log('BUSINESS FRONTEND', business)
+    //console.log('BUSINESS FRONTEND', business)
     // const businessObject = business.businessObj
 
     useEffect(() => {

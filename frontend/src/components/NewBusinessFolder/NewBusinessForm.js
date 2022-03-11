@@ -64,6 +64,11 @@ const NewBusinessForm = () => {
         history.push(`/business/${newBusiness.id}`)
     }
 
+    const handleCancel = (e) => {
+        e.preventDefault();
+        history.push(`/`)
+    }
+
     return (
         <div className="new-form-large-container">
             <div className="left-half">
@@ -169,6 +174,7 @@ const NewBusinessForm = () => {
                         placeholder='Zip Code'
                         name='zipCode' />
                     <button type="submit">Submit</button>
+                    <button onClick={handleCancel}>Cancel</button>
                 </form>
             </div>
             <div className="right-half"></div>

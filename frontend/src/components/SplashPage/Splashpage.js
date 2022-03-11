@@ -68,7 +68,7 @@ const Splashpage = () => {
                 <ul className='splash-ul'>
                     <li>Write a Review</li>
                     <li>
-                        <Link to='/new' style={styleLogin}>Add a Business</Link>
+                        <Link to='/signup' style={styleLogin}>Add a Business</Link>
                     </li>
                     <li></li>
                     <li>

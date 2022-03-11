@@ -59,7 +59,11 @@ const EditBusinessForm = () => {
         //console.log('11111111', updatedBusiness)
         history.push(`/business/${id}`)
     };
-    //cancel button later
+    
+    const handleCancel = (e) => {
+        e.preventDefault();
+        history.push(`/business/${id}`)
+    }
 
     return (
         <div>
@@ -155,6 +159,7 @@ const EditBusinessForm = () => {
                     placeholder='Zip Code'
                     name='zipCode' />
                 <button type="submit">Submit</button>
+                <button onClick={handleCancel}>Cancel</button>
             </form>
 
         </div>
