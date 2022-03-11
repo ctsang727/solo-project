@@ -6,7 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import * as sessionActions from "./store/session";
 import Splashpage from "./components/SplashPage/";
-import BusinessDetail from "./components/BusinessDetail";
+import BusinessDetail from "./components/BusinessPage/BusinessDetail";
 import NewBusinessForm from "./components/NewBusinessFolder/NewBusinessForm";
 import EditBusinessForm from "./components/EditBusinessForm";
 import NewReviewForm from "./components/NewReviewForm";
@@ -26,22 +26,25 @@ function App() {
             <Splashpage isLoaded={isLoaded} />
           </Route>
           <Route path='/login'>
-          <Navigation isLoaded={isLoaded} />
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
             </Route>
           <Route exact path= '/business/:id'>
+          <Navigation isLoaded={isLoaded} />
             <BusinessDetail />
             </Route>
           <Route path= '/new'>
+          <Navigation isLoaded={isLoaded} />
             <NewBusinessForm />
             </Route>
           <Route path= '/business/edit/:id'>
+          <Navigation isLoaded={isLoaded} />
             <EditBusinessForm />
             </Route>
           <Route path= '/reviews/new/:id'>
+          <Navigation isLoaded={isLoaded} />
             <NewReviewForm/>
           </Route>
         </Switch>

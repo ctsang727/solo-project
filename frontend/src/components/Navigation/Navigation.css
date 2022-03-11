@@ -11,6 +11,12 @@
 #navbar{
     list-style-type: none;
     color: blue;
+    position:sticky;
+    z-index: 1;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .profile-button{
