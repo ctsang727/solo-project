@@ -20,9 +20,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      answer: {
+      review: {
         allowNull: false,
         type: Sequelize.TEXT
+      },
+      imageUrl: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

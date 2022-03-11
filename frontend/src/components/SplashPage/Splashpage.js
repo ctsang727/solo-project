@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchBusinesses } from '../../store/business';
 import { useHistory } from 'react-router-dom';
+import { fetchReviews } from '../../store/review';
 
 
 const styleLogin = {
@@ -37,11 +38,14 @@ const Splashpage = () => {
     const businessArray = Object.values(businessList)
     console.log(businessArray)
     console.log(businessList);
-
+    const reviewList = useSelector((state) => state.reviewState)
+    const reviewArray = Object.values(reviewList)
+    console.log('REVIEW LIST', reviewList)
 
 
     useEffect(() => {
-        dispatch(fetchBusinesses())
+        dispatch(fetchBusinesses());
+        dispatch(fetchReviews());
     }, [dispatch])
 
 

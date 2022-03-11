@@ -16,17 +16,16 @@ module.exports = (sequelize, DataTypes) => {
     rating: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        min: 0,
-        max: 5
-      }
     },
-    answer: {
+    review: {
      type: DataTypes.TEXT,
      allowNull: false,
      validate: {
        len: [1, 5000]
      }
+    },
+    imageUrl: {
+      type: DataTypes.STRING,
     },
   }, {});
   Review.associate = function(models) {

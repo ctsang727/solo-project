@@ -7,7 +7,8 @@ module.exports = {
         userId: 1,
         businessId: 1,
         rating: 4,
-        answer: 'Really good appetizers and cheap',
+        review: 'great burgers made by bob',
+        imageUrl: 'https://www.pngitem.com/pimgs/m/26-260083_burger-from-bob-s-burgers-png-download-burger.png',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -15,7 +16,8 @@ module.exports = {
         userId: 2,
         businessId: 2,
         rating: 3,
-        answer: 'food was good, service was bad',
+        review: 'Cant believe I paid 20 dollars for this pizza',
+        imageUrl: 'https://www.disneytouristblog.com/wp-content/uploads/2012/03/1106300036.jpg',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -23,7 +25,8 @@ module.exports = {
         userId: 3,
         businessId: 3,
         rating: 2,
-        answer: 'Would not recommend, steak was overcooked',
+        review: 'Every time I come here the same 6 people are taking up all the good seats >:(',
+        imageUrl: '',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -31,7 +34,8 @@ module.exports = {
         userId: 1,
         businessId: 2,
         rating: 3,
-        answer: 'agree with the other reviews, service was bad but food was good.',
+        review: 'agree with the other reviews',
+        imageUrl:'',
         createdAt: new Date(),
         updatedAt: new Date()
       },

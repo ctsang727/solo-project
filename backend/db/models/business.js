@@ -40,7 +40,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [5, 5]
       }
-    }
+    },
+    imageUrl: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {});
   Business.associate = function (models) {
     // associations can be defined here
