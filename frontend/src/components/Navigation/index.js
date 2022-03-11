@@ -12,10 +12,8 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
       <NavLink className='inactive' activeclassName='active' exact to="/">Home</NavLink>
-      <NavLink className='inactive' activeclassName='active' to="/#"> For Businesses </NavLink>
-      <NavLink className='inactive' activeclassName='active' to="/#"> Write a Review </NavLink>
-      <NavLink className='inactive' activeclassName='active' to="/login"> Log In </NavLink>
-      <NavLink className='inactive' activeclassName='active' to="/signup"> Sign Up </NavLink>
+      <NavLink className='inactive' activeclassName='active' to="/business/new"> For Businesses </NavLink>
+      <NavLink className='inactive' activeclassName='active' to="/"> Write a Review </NavLink>
       <ProfileButton user={sessionUser} />
       </>
       );
@@ -23,7 +21,7 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <NavLink className='inactive' activeclassName='active' exact to="/">Home</NavLink>
-        <NavLink className='inactive' activeclassName='active' to="/#"> For Businesses </NavLink>
+        <NavLink className='inactive' activeclassName='active' to="/business/new"> For Businesses </NavLink>
         <NavLink className='inactive' activeclassName='active' to="/#"> Write a Review </NavLink>
         <NavLink className='inactive' activeclassName='active' to="/login"> Log In </NavLink>
         <NavLink className='inactive' activeclassName='active' to="/signup"> Sign Up </NavLink>
@@ -34,9 +32,9 @@ function Navigation({ isLoaded }) {
   return (
     <div className='navbar-container'>
       <ul id='navbar'>
-        <li>
+        
           {isLoaded && sessionLinks}
-        </li>
+        
       </ul>
     </div>
   );

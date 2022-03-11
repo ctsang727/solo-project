@@ -28,6 +28,7 @@ const NewReviewForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const userId = sessionUser?.id
+        if (!userId) history.push('/login')
         const newReview = {
             businessId,
             userId,
@@ -40,7 +41,7 @@ const NewReviewForm = () => {
         const freshReview = await dispatch(postReview(newReview))
         console.log(freshReview)
 
-        history.push('/')
+        history.push(`/business/${businessId}`)
     }
 
 

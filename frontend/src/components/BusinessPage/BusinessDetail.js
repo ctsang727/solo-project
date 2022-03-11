@@ -77,19 +77,20 @@ const BusinessDetail = () => {
             <div className='filler'></div>
             <div className='filler'></div>
             <div className='first-row'>
+                <div className='h-container'>
                 <h1>{`${business?.title}`}</h1>
-                <h2>Average Rating: {ratingsAvg(reviewsArray)}</h2>
+                <h2 className='rating'>Average Rating: {ratingsAvg(reviewsArray)}</h2>
+                </div>
                 <button onClick={redirect}>Write a Review</button>
+                <p>{`${business?.address}`}, {`${business?.city}`}, {`${business?.zipCode}`} </p>
                 <p>{`${business?.description}`}</p>
-                <p>{`${business?.address}`}</p>
-                <p>{`${business?.city}`}</p>
-                <p>{`${business?.zipCode}`}</p>
                 {businessDetailHTML}
             </div>
             <div className='filler'></div>
             <div className='filler'></div>
 
             <div>
+                <h2>Reviews:</h2>
                 {reviewsArray.map(review => (
                     <p>{review.review}</p>
                 ))}

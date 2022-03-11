@@ -15,8 +15,10 @@
     z-index: 1;
     background-color: white;
     display: flex;
-    align-items: center;
     justify-content: space-evenly;
+    align-items: center;
+    margin-top:0;
+    
 }
 
 .profile-button{
