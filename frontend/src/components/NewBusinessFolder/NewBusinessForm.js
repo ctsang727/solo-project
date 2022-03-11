@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux"
-import { postBusiness } from "../store/business";
+import { postBusiness } from "../../store/business"
 import { useState, } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import './NewForm.css'
 
 
 const NewBusinessForm = () => {
@@ -10,6 +11,8 @@ const NewBusinessForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
+    // const nextBusiness = useSelector(state => state.businessState);
+    // console.log(nextBusiness)
     //console.log(sessionUser?.id)
 
     //const [ownerId, setOwnerId] = useState(sessionUser)
@@ -25,7 +28,7 @@ const NewBusinessForm = () => {
     //phone?
     //many locations?
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const ownerId = sessionUser?.id
         const business = {
@@ -39,16 +42,20 @@ const NewBusinessForm = () => {
         }
         
 
-        dispatch(postBusiness(business))
-        console.log('NEW BIZ AFTER DISPATCH', business)
+        const newBusiness = await dispatch(postBusiness(business))
+        console.log(newBusiness)
+        // console.log('NEW BIZ AFTER DISPATCH', business)
+        // console.log(nextBusiness)
 
-        history.push(`/`)
+        history.push(`/business/${newBusiness.id}`)
     }
 
     return (
-        <div>
-            <h1>New Business Form</h1>
-            <form onSubmit={handleSubmit}>
+        <div className="new-form-large-container">
+            <div className="left-half">
+            <div><h1>New Business Form</h1></div>
+            
+            <form className="new-business-form" onSubmit={handleSubmit}>
                 <input
                 type='hidden'
                 name='ownerId'
@@ -63,7 +70,7 @@ const NewBusinessForm = () => {
                     value={title}
                     placeholder='Name of Business'
                     name='title' />
-                <input
+                <textarea
                     onChange={(e) => setDescription(e.target.value)}
                     value={description}
                     placeholder='Description'
@@ -144,6 +151,8 @@ const NewBusinessForm = () => {
                     name='zipCode' />
                 <button type="submit">Submit</button>
             </form>
+            </div>
+            <div className="right-half"></div>
 
         </div>
     )

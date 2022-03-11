@@ -1,8 +1,10 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
+
 //require models
 const { Business } = require('../../db/models');
+
 
 const router = express.Router();
 
@@ -29,7 +31,8 @@ router.get(
 
 
 router.post(
-  '/new', asyncHandler(async (req, res) => {
+  '/new',
+   asyncHandler(async (req, res) => {
     //console.log('INSIDE POST ROUTE')
     const business = await Business.create(req.body);
     return res.json(business);
