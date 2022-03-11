@@ -25,6 +25,8 @@ const BusinessDetail = () => {
     const reviews = useSelector((state) => state.reviewState)
     const reviewsArray = Object.values(reviews)
     console.log('!!!!!!!!', reviewsArray)
+    const userId = reviewsArray.userId
+    console.log(userId)
 
 
     useEffect(() => {
@@ -54,16 +56,16 @@ const BusinessDetail = () => {
         array.forEach(review => (
             sum += review.rating
         ))
-        return sum/array.length
-    } 
+        return (sum / array.length).toFixed(2)
+    }
     console.log(ratingsAvg(reviewsArray));
 
     let businessDetailHTML;
     if (sessionUser && sessionUser.id === business.ownerId) {
         businessDetailHTML = (
             <>
-                <button onClick={handleDelete}>Delete</button>
-                <button onClick={handleEdit}>Edit</button>
+                <button onClick={handleDelete}>Delete Business</button>
+                <button onClick={handleEdit}>Edit Business Information</button>
             </>
         )
     }
@@ -72,29 +74,42 @@ const BusinessDetail = () => {
             <div className='filler'></div>
             <div className='photo-div'>
                 <img alt='business photo' src={`${business?.imageUrl}`}></img>
-            </div>
-
-            <div className='filler'></div>
-            <div className='filler'></div>
-            <div className='first-row'>
                 <div className='h-container'>
-                <h1>{`${business?.title}`}</h1>
-                <h2 className='rating'>Average Rating: {ratingsAvg(reviewsArray)}</h2>
+                    <h1>{`${business?.title}`}</h1>
+                    <h2 className='rating'>Average Rating: {ratingsAvg(reviewsArray)}</h2>
                 </div>
-                <button onClick={redirect}>Write a Review</button>
-                <p>{`${business?.address}`}, {`${business?.city}`}, {`${business?.zipCode}`} </p>
-                <p>{`${business?.description}`}</p>
-                {businessDetailHTML}
+            </div>
+
+            <div className='filler'></div>
+            <div className='filler'></div>
+            <div className='important-div'>
+
+                <div className='first-row'>
+
+                    <button onClick={redirect}>Write a Review</button>
+                    <p>{`${business?.address}`}, {`${business?.city}`}, {`${business?.zipCode}`} </p>
+                    <p>{`${business?.description}`}</p>
+                    {businessDetailHTML}
+                </div>
+                <div className='reviews'>
+                    <h2>Reviews:</h2>
+                    <div className='details'>
+                        {reviewsArray.map(review => (
+                            <>  
+                            <div className='more-details'>
+                                <p>Rating: {review.rating}/5</p>
+                                <p className='review-review'>{review.review}</p>
+                                <p></p>
+                            </div>
+                            </>
+                        ))}
+                    </div>
+                </div>
             </div>
             <div className='filler'></div>
             <div className='filler'></div>
 
-            <div>
-                <h2>Reviews:</h2>
-                {reviewsArray.map(review => (
-                    <p>{review.review}</p>
-                ))}
-            </div>
+
 
 
 
