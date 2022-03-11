@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
        len: [1, 5000]
      }
     },
+    imageUrl: {
+      type: DataTypes.STRING,
+    },
   }, {});
   Review.associate = function(models) {
     // associations can be defined here
