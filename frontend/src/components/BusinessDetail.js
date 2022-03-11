@@ -5,6 +5,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { editBusiness, fetchOneBusiness } from '../store/business';
 import { useDispatch } from 'react-redux';
 import { deleteBusiness } from '../store/business';
+import { fetchSpecificReviews } from '../store/review';
 
 
 
@@ -19,9 +20,12 @@ const BusinessDetail = () => {
     const business = useSelector((state) => state.businessState[id])
     //console.log('BUSINESS FRONTEND', business)
     // const businessObject = business.businessObj
+    const reviews  = useSelector((state) => state.reviewState[id])
+    
 
     useEffect(() => {
         dispatch(fetchOneBusiness(+id))
+        dispatch(fetchSpecificReviews(+id))
     },[dispatch,+id])
 
     const handleDelete = (e) => {
@@ -52,8 +56,16 @@ const BusinessDetail = () => {
             <p>{`${business?.address}`}</p>
             <p>{`${business?.city}`}</p>
             <p>{`${business?.zipCode}`}</p>
-            <img alt='business photo' src={`${business?.imageUrl}`}></img>
             {businessDetailHTML}
+            <div>
+                <img alt='business photo' src={`${business?.imageUrl}`}></img>
+            </div>
+            
+
+            <div>
+                <h3>{`${reviews?.answer}`}</h3>
+            </div>
+            
             
         </div>
     )
