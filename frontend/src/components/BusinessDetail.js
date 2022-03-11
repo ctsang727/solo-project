@@ -52,6 +52,7 @@ const BusinessDetail = () => {
             <p>{`${business?.address}`}</p>
             <p>{`${business?.city}`}</p>
             <p>{`${business?.zipCode}`}</p>
+            <img alt='business photo' src={`${business?.imageUrl}`}></img>
             {businessDetailHTML}
             
         </div>
