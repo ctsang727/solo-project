@@ -39,6 +39,11 @@ const BusinessDetail = () => {
         e.preventDefault();
         history.push(`/business/edit/${id}`)
     }
+
+    const redirect = (e) => {
+        e.preventDefault();
+        history.push(`/reviews/new/${id}`)
+    }
     let businessDetailHTML;
     if (sessionUser && sessionUser.id === business.ownerId){
         businessDetailHTML = (
@@ -50,7 +55,7 @@ const BusinessDetail = () => {
     }
     return (
         <div>
-            
+            <button onClick={redirect}>Write a Review</button>
             <h2>{`${business?.title}`}</h2>
             <p>{`${business?.description}`}</p>
             <p>{`${business?.address}`}</p>

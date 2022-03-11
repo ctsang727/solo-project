@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf"
 
 const LOAD_REVIEWS = 'reviews/loadReviews'
 const LOAD_SPECIFIC_REVIEWS = 'reviews/specificReviews'
+const ADD_REVIEW = 'reviews/addReview' 
 
 export const loadReviews = (reviews) => (
     {
@@ -17,6 +18,12 @@ export const loadSpecificReviews = (reviews) => (
     }
 )
 
+export const addReview = (review) => (
+    {
+        type: ADD_REVIEW,
+        review 
+    }
+)
 
 //GET all reviews thunk
 export const fetchReviews = () => async dispatch => {
@@ -38,6 +45,19 @@ export const fetchSpecificReviews = id => async dispatch => {
     dispatch(loadSpecificReviews(reviews))
 }
 
+//POST review for a business
+export const postReview = review => async dispatch => {
+    console.log('IN THUNK', review)
+    const res = await csrfFetch(`/api/reviews/new/${review.businessId}`, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json", },
+        body: JSON.stringify(review)
+    })
+    const newReview = await res.json()
+    dispatch(addReview(newReview))
+    return newReview
+}
+
 
 const reviewReducer = (state = {}, action) => {
     switch(action.type){
@@ -54,6 +74,12 @@ const reviewReducer = (state = {}, action) => {
                 specificReviews[review.id] = review;
             })
             return specificReviews;
+
+        case ADD_REVIEW:
+            let newState;
+            newState = {...state}
+            newState[action.review.businessId] = action.review;
+            return newState;
 
         default:
             return state;
