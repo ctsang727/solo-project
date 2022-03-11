@@ -31,9 +31,11 @@ const NewBusinessForm = () => {
     //phone?
     //many locations?   
 
+    const space = /^\S+$/
+
     useEffect(() => {
         const errors = []
-        if (!title) errors.push('Name of business required')
+        if (!title || title === space) errors.push('Name of business required')
         if (!description) errors.push('Description of business required')
         if (!address) errors.push('Address of business required')
         if (!city) errors.push('City required')
