@@ -26,6 +26,7 @@ const NewBusinessForm = () => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [zipCode, setZipCode] = useState('');
+    const [imageUrl, setImageUrl] = useState('')
     //will have to update model
     //country?
     //phone?
@@ -40,9 +41,11 @@ const NewBusinessForm = () => {
         if (!address) errors.push('Address of business required')
         if (!city) errors.push('City required')
         if (!zipCode) errors.push('Zip code required')
+        if (!imageUrl) errors.push('Image required')
+
 
         setValidationErrors(errors)
-    }, [title,description,address,city,zipCode])
+    }, [title,description,address,city,zipCode,imageUrl])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -55,6 +58,7 @@ const NewBusinessForm = () => {
             city,
             state,
             zipCode,
+            imageUrl,
         }
 
 
@@ -175,6 +179,12 @@ const NewBusinessForm = () => {
                         value={zipCode}
                         placeholder='Zip Code'
                         name='zipCode' />
+                    <input
+                        onChange={(e) => setImageUrl(e.target.value)}
+                        value={imageUrl}
+                        placeholder='Image URL'
+                        name='imageUrl'
+                        />
                     <button type="submit">Submit</button>
                     <button onClick={handleCancel}>Cancel</button>
                 </form>

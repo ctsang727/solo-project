@@ -48,15 +48,26 @@ const BusinessDetail = () => {
 
     const redirect = (e) => {
         e.preventDefault();
-        history.push(`/reviews/new/${id}`)
+        if (sessionUser){
+            history.push(`/reviews/new/${id}`)
+        } else {
+            history.push(`/login`)
+        }
+        
     }
 
     const ratingsAvg = (array) => {
         let sum = 0;
-        array.forEach(review => (
+        let something = 'None'
+        if(array.length < 1) {
+            return something
+        } else {
+            array.forEach(review => (
             sum += review.rating
         ))
         return (sum / array.length).toFixed(2)
+        }
+        
     }
     console.log(ratingsAvg(reviewsArray));
 
