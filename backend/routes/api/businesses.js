@@ -5,7 +5,7 @@ const asyncHandler = require('express-async-handler');
 //require models
 const { Business } = require('../../db/models');
 
-const { validateCreate } = require('../../validations/businesses.')
+const { validateCreate, validateUpdate } = require('../../validations/businesses.')
 
 const router = express.Router();
 
@@ -41,7 +41,7 @@ router.post(
 
 //edit business
 router.put(
-  '/edit/:id',
+  '/edit/:id', validateUpdate,
   asyncHandler(async function (req, res) {
     const id = parseInt(req.params.id)
     const editbusiness = await Business.update(req.body, {
