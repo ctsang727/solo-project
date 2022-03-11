@@ -16,6 +16,7 @@ const EditBusinessForm = () => {
 
     const selectBusiness = useSelector((state) => state.businessState)
     //console.log('@@@@####', selectBusiness[id])
+    const [errors, setValidationErrors] = useState([])
 
     useEffect(() => {
         dispatch(fetchBusinesses()) 
@@ -27,6 +28,17 @@ const EditBusinessForm = () => {
     const [city, setCity] = useState(selectBusiness[id]?.city);
     const [state, setState] = useState(selectBusiness[id]?.state);
     const [zipCode, setZipCode] = useState(selectBusiness[id]?.zipCode);
+
+    useEffect(() => {
+        const errors = []
+        if (!title) errors.push('Name of business required')
+        if (!description) errors.push('Description of business required')
+        if (!address) errors.push('Address of business required')
+        if (!city) errors.push('City required')
+        if (!zipCode) errors.push('Zip code required')
+
+        setValidationErrors(errors)
+    }, [title,description,address,city,zipCode])
 
 
     const handleSubmit = async (e) => {
@@ -45,21 +57,29 @@ const EditBusinessForm = () => {
 
         const updatedBusiness = await dispatch(editBusiness(payload));
         //console.log('11111111', updatedBusiness)
-        // history.push(`/business/${id}`)
+        history.push(`/business/${id}`)
     };
-    //cancel button later
+    
+    const handleCancel = (e) => {
+        e.preventDefault();
+        history.push(`/business/${id}`)
+    }
 
     return (
         <div>
             <h1>Edit Business Form</h1>
             <form onSubmit={handleSubmit}>
-                
+            <ul className="errors">
+                        {errors.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
                 <input
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                     placeholder='Name of Business'  
                     name='title' />
-                <input
+                <textarea
                     onChange={(e) => setDescription(e.target.value)}
                     value={description}
                     placeholder='Description'
@@ -139,6 +159,7 @@ const EditBusinessForm = () => {
                     placeholder='Zip Code'
                     name='zipCode' />
                 <button type="submit">Submit</button>
+                <button onClick={handleCancel}>Cancel</button>
             </form>
 
         </div>

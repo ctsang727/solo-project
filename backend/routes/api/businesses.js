@@ -5,6 +5,7 @@ const asyncHandler = require('express-async-handler');
 //require models
 const { Business } = require('../../db/models');
 
+const { validateCreate } = require('../../validations/businesses.')
 
 const router = express.Router();
 
@@ -31,7 +32,7 @@ router.get(
 
 
 router.post(
-  '/new',
+  '/new', validateCreate,
    asyncHandler(async (req, res) => {
     //console.log('INSIDE POST ROUTE')
     const business = await Business.create(req.body);
