@@ -21,7 +21,6 @@ const BusinessDetail = () => {
 
     const reviews = useSelector((state) => state.reviewState)
     const reviewsArray = Object.values(reviews)
-    console.log('!!!!!!!!', reviewsArray)
 
     useEffect(() => {
         dispatch(fetchOneBusiness(+id))
@@ -30,7 +29,7 @@ const BusinessDetail = () => {
 
     const handleDelete = (e) => {
         e.preventDefault();
-        
+
         history.push('/')
         return dispatch(deleteBusiness(business))
 
@@ -41,61 +40,28 @@ const BusinessDetail = () => {
         history.push(`/business/edit/${id}`)
     }
 
-    //may still be useful
-    const userReviews = reviewsArray.filter(item => item.userId === sessionUser.id)
-    const userReviewsObj = {}
-    // console.log('HELLO', userReviewsObj.emptyarray.push(userReviews))
-    // console.log('TESTTSTS', userReviewsObj.userReviews)
-    console.log('PLEASE', userReviews)
-    let spread = {...userReviews}
-    
-
-    const findUserId = () => {
-        
-        for(const [key, value] of Object.entries(spread)) {
-            //console.log(value.userId)
-            const userIdentity = value.userId
-            return userIdentity
-        }   
-    }
-    console.log(findUserId())
-    
-    if (findUserId() === sessionUser.id) {
-        let toggleButtonHTML;
-        toggleButtonHTML = (
-            
-            reviewsArray.map(review => (
-                <div key='key' className='more-details'>
-                    <p>Rating: {review.rating}/5</p>
-                    <p className='review-review'>{review.review}</p>
-                    <button onClick={async() => { await dispatch(deleteReview(review?.id))} }>Delete</button>
-                </div>
-            ))
-        )
-    }
-
     const redirect = (e) => {
         e.preventDefault();
-        if (sessionUser){
+        if (sessionUser) {
             history.push(`/reviews/new/${id}`)
         } else {
             history.push(`/login`)
         }
-        
+
     }
 
     const ratingsAvg = (array) => {
         let sum = 0;
         let something = 'None'
-        if(array.length < 1) {
+        if (array.length < 1) {
             return something
         } else {
             array.forEach(review => (
-            sum += review.rating
-        ))
-        return (sum / array.length).toFixed(2)
+                sum += review.rating
+            ))
+            return (sum / array.length).toFixed(2)
         }
-        
+
     }
 
     let businessDetailHTML;
@@ -108,12 +74,25 @@ const BusinessDetail = () => {
         )
     }
 
-    // let toggleDeleteButton;
-    // if (sessionUser.id === )
 
-    //delete button needs to be specific to user
     //want to be able to see business details without having to be logged in
-    //
+    let divDetails;
+    if (sessionUser) {
+        divDetails = (<div className='details'>
+            {reviewsArray.map(review => (
+                <>
+                    <div key='key' className='more-details'>
+                        <p>Rating: {review.rating}/5</p>
+                        <p className='review-review'>{review.review}</p>
+                        {/* <div>{review.userId === sessionUser.id &&
+                                        <button onClick={async () => { await dispatch(deleteReview(review?.id)) }}>Delete</button>}
+                                    </div> */}
+                    </div>
+                </>
+            ))}
+        </div>)
+    } 
+
 
     return (
         <div className='large-container'>
@@ -140,27 +119,22 @@ const BusinessDetail = () => {
                 <div className='reviews'>
                     <h2>Reviews:</h2>
                     <div className='details'>
-                        {/* {reviewsArray.map(review => (
-                            <>  
-                            <div key='key' className='more-details'>
-                                <p>Rating: {review.rating}/5</p>
-                                <p className='review-review'>{review.review}</p>
-                                <button onClick={async() => { await dispatch(deleteReview(review?.id))} }>Delete</button>
-                            </div>
-
+                    {sessionUser && 
+                    <>
+                        {reviewsArray.map(review => (
+                            <>
+                                <div key='key' className='more-details'>
+                                    <p>Rating: {review.rating}/5</p>
+                                    <p className='review-review'>{review.review}</p>
+                                </div>
                             </>
-                        ))} */}
+                        ))}
+                    </>}
                     </div>
-
                 </div>
             </div>
             <div className='filler'></div>
             <div className='filler'></div>
-
-
-
-
-
         </div>
     )
 }
