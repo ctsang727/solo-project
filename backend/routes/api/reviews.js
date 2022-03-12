@@ -38,9 +38,21 @@ router.post(
     })
 );
 
-
 //update review for a business
 
-//delete review 
+//delete review
+//requireauth maybe 
+router.delete(
+    '/:id',
+    asyncHandler(async function(req, res) {
+        const reviewId = parseInt(req.params.id)
+        console.log('INSIDE API', reviewId)
+        const review = await Review.findByPk(reviewId)
+        await review.destroy();
+        return res.json(reviewId)
+    })
+)
+
+
 
 module.exports = router;
