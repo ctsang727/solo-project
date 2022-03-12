@@ -22,9 +22,6 @@ const BusinessDetail = () => {
     const reviews = useSelector((state) => state.reviewState)
     const reviewsArray = Object.values(reviews)
     console.log('!!!!!!!!', reviewsArray)
-    const userId = sessionUser.id
-    
-
 
     useEffect(() => {
         dispatch(fetchOneBusiness(+id))
@@ -44,16 +41,37 @@ const BusinessDetail = () => {
         history.push(`/business/edit/${id}`)
     }
 
+    //may still be useful
     const userReviews = reviewsArray.filter(item => item.userId === sessionUser.id)
     const userReviewsObj = {}
     // console.log('HELLO', userReviewsObj.emptyarray.push(userReviews))
     // console.log('TESTTSTS', userReviewsObj.userReviews)
     console.log('PLEASE', userReviews)
+    let spread = {...userReviews}
+    
 
-    const handleDeleteReview = (e) => {
-        e.preventDefault();
+    const findUserId = () => {
         
-        return dispatch(deleteReview(userReviews))
+        for(const [key, value] of Object.entries(spread)) {
+            //console.log(value.userId)
+            const userIdentity = value.userId
+            return userIdentity
+        }   
+    }
+    console.log(findUserId())
+    
+    if (findUserId() === sessionUser.id) {
+        let toggleButtonHTML;
+        toggleButtonHTML = (
+            
+            reviewsArray.map(review => (
+                <div key='key' className='more-details'>
+                    <p>Rating: {review.rating}/5</p>
+                    <p className='review-review'>{review.review}</p>
+                    <button onClick={async() => { await dispatch(deleteReview(review?.id))} }>Delete</button>
+                </div>
+            ))
+        )
     }
 
     const redirect = (e) => {
@@ -90,7 +108,13 @@ const BusinessDetail = () => {
         )
     }
 
-    
+    // let toggleDeleteButton;
+    // if (sessionUser.id === )
+
+    //delete button needs to be specific to user
+    //want to be able to see business details without having to be logged in
+    //
+
     return (
         <div className='large-container'>
             <div className='filler'></div>
@@ -116,16 +140,18 @@ const BusinessDetail = () => {
                 <div className='reviews'>
                     <h2>Reviews:</h2>
                     <div className='details'>
-                        {reviewsArray.map(review => (
+                        {/* {reviewsArray.map(review => (
                             <>  
                             <div key='key' className='more-details'>
                                 <p>Rating: {review.rating}/5</p>
                                 <p className='review-review'>{review.review}</p>
                                 <button onClick={async() => { await dispatch(deleteReview(review?.id))} }>Delete</button>
                             </div>
+
                             </>
-                        ))}
+                        ))} */}
                     </div>
+
                 </div>
             </div>
             <div className='filler'></div>
