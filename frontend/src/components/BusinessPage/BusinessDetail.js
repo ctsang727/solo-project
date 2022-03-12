@@ -6,36 +6,34 @@ import { editBusiness, fetchOneBusiness } from '../../store/business';
 import { useDispatch } from 'react-redux';
 import { deleteBusiness } from '../../store/business';
 import { fetchSpecificReviews } from '../../store/review';
+import { deleteReview } from '../../store/review';
 import './BusinessPage.css'
 
 
 
 const BusinessDetail = () => {
-    //console.log('are we here?')
+    console.log('MAIN BUSINESS PAGE')
     const dispatch = useDispatch();
     const { id } = useParams();
     const history = useHistory();
-    // console.log(typeof +id)
     const sessionUser = useSelector(state => state.session.user)
-    //console.log('USER', sessionUser)
     const business = useSelector((state) => state.businessState[id])
-    //console.log('BUSINESS FRONTEND', business)
-    // const businessObject = business.businessObj
 
     const reviews = useSelector((state) => state.reviewState)
     const reviewsArray = Object.values(reviews)
     console.log('!!!!!!!!', reviewsArray)
-    const userId = reviewsArray.userId
-    console.log(userId)
+    const userId = sessionUser.id
+    
 
 
     useEffect(() => {
         dispatch(fetchOneBusiness(+id))
         dispatch(fetchSpecificReviews(+id))
-    }, [dispatch, +id])
+    }, [dispatch, id])
 
     const handleDelete = (e) => {
         e.preventDefault();
+        
         history.push('/')
         return dispatch(deleteBusiness(business))
 
@@ -44,6 +42,18 @@ const BusinessDetail = () => {
     const handleEdit = (e) => {
         e.preventDefault();
         history.push(`/business/edit/${id}`)
+    }
+
+    const userReviews = reviewsArray.filter(item => item.userId === sessionUser.id)
+    const userReviewsObj = {}
+    // console.log('HELLO', userReviewsObj.emptyarray.push(userReviews))
+    // console.log('TESTTSTS', userReviewsObj.userReviews)
+    console.log('PLEASE', userReviews)
+
+    const handleDeleteReview = (e) => {
+        e.preventDefault();
+        
+        return dispatch(deleteReview(userReviews))
     }
 
     const redirect = (e) => {
@@ -69,7 +79,6 @@ const BusinessDetail = () => {
         }
         
     }
-    console.log(ratingsAvg(reviewsArray));
 
     let businessDetailHTML;
     if (sessionUser && sessionUser.id === business.ownerId) {
@@ -80,6 +89,8 @@ const BusinessDetail = () => {
             </>
         )
     }
+
+    
     return (
         <div className='large-container'>
             <div className='filler'></div>
@@ -107,10 +118,10 @@ const BusinessDetail = () => {
                     <div className='details'>
                         {reviewsArray.map(review => (
                             <>  
-                            <div className='more-details'>
+                            <div key='key' className='more-details'>
                                 <p>Rating: {review.rating}/5</p>
                                 <p className='review-review'>{review.review}</p>
-                                <p></p>
+                                <button onClick={async() => { await dispatch(deleteReview(review?.id))} }>Delete</button>
                             </div>
                             </>
                         ))}
