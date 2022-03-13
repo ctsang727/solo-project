@@ -10,6 +10,7 @@ import BusinessDetail from "./components/BusinessPage/BusinessDetail";
 import NewBusinessForm from "./components/NewBusinessFolder/NewBusinessForm";
 import EditBusinessForm from "./components/EditBusinessForm";
 import NewReviewForm from "./components/NewReviewForm";
+import AllBuinessesPage from "./components/AllBusinessesPage/AllBusinesses";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,10 @@ function App() {
           <Route path= '/reviews/new/:id'>
           <Navigation isLoaded={isLoaded} />
             <NewReviewForm/>
+          </Route>
+          <Route path= '/all'>
+            <Navigation isLoaded={isLoaded} />
+            <AllBuinessesPage />
           </Route>
         </Switch>
       

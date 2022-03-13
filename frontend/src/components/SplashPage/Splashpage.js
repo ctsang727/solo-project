@@ -22,12 +22,16 @@ const styleSignup = {
     border: '2px solid white',
     padding: '5px',
     borderRadius: '3px',
+    
+    
 }
 
 const styleBusinessLinks = {
-    color: 'black',
+    color: '#d32323',
     fontSize: '20px',
     textDecoration: 'none',
+    fontFamily:" Helvetica Neue,Helvetica,Arial,sans-serif",
+    fontWeight: 'bold',
 }
 
 const Splashpage = () => {
@@ -119,9 +123,13 @@ const Splashpage = () => {
                     <div className='filler'></div>
                     <div className='below-photo'>
                         {businessArray.map(business => (
-                            <span>
-                                <Link to={`/business/${business.id}`} style={styleBusinessLinks}>{business.title}</Link>
-                                <p>{business.description}</p>
+                            <span className='home-span'>
+                                <div className='image-div'><img src={`${business.imageUrl}`}></img></div>
+                                <div className='text-div'>
+                                    <Link to={`/business/${business.id}`} style={styleBusinessLinks}>{business.title}</Link>
+                                    <p>{business.description}</p>
+                                </div>
+
                             </span>
                         ))}
                     </div>
