@@ -13,7 +13,7 @@ function Navigation({ isLoaded }) {
       <>
       <NavLink className='inactive' activeclassName='active' exact to="/">Home</NavLink>
       <NavLink className='inactive' activeclassName='active' to="/new"> For Businesses </NavLink>
-      <NavLink className='inactive' activeclassName='active' to="/"> Write a Review </NavLink>
+      <NavLink className='inactive' activeclassName='active' to="/all"> Write a Review </NavLink>
       <ProfileButton user={sessionUser} />
       </>
       );
@@ -22,7 +22,7 @@ function Navigation({ isLoaded }) {
       <>
         <NavLink className='inactive' activeclassName='active' exact to="/">Home</NavLink>
         <NavLink className='inactive' activeclassName='active' to="/new"> For Businesses </NavLink>
-        <NavLink className='inactive' activeclassName='active' to="/#"> Write a Review </NavLink>
+        <NavLink className='inactive' activeclassName='active' to="/all"> Write a Review </NavLink>
         <NavLink className='inactive' activeclassName='active' to="/login"> Log In </NavLink>
         <NavLink className='inactive' activeclassName='active' to="/signup"> Sign Up </NavLink>
       </>

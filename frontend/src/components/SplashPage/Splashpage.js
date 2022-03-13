@@ -59,7 +59,7 @@ const Splashpage = () => {
         splashLinks = (
             <><nav>
                 <ul className='splash-ul'>
-                    <li>Write a Review</li>
+                    <li><Link to='/all' style={styleLogin}>Write a Review</Link></li>
                     <li><Link to='/new' style={styleLogin}>Add a Business</Link></li>
                     <li></li>
                     <li></li>
@@ -74,7 +74,7 @@ const Splashpage = () => {
         splashLinks = (
             <nav>
                 <ul className='splash-ul'>
-                    <li>Write a Review</li>
+                    <li><Link to='/all' style={styleLogin}>Write a Review</Link></li>
                     <li>
                         <Link to='/signup' style={styleLogin}>Add a Business</Link>
                     </li>

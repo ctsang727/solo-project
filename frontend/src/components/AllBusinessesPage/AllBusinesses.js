@@ -33,7 +33,7 @@ const AllBuinessesPage = () => {
             <div className='filler'></div>
             <div className='business-list-container'>
                 <div className='page-header-text'>
-                <h2>Been to the businesses recently?</h2>
+                <h2>Been to these businesses recently?</h2>
                 </div>
                 {businessArray.map(business => (
                     <span>
