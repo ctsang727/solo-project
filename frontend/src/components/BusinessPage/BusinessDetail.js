@@ -74,25 +74,23 @@ const BusinessDetail = () => {
         )
     }
 
-
     //want to be able to see business details without having to be logged in
-    let divDetails;
-    if (sessionUser) {
-        divDetails = (<div className='details'>
-            {reviewsArray.map(review => (
-                <>
-                    <div key='key' className='more-details'>
-                        <p>Rating: {review.rating}/5</p>
-                        <p className='review-review'>{review.review}</p>
-                        {/* <div>{review.userId === sessionUser.id &&
-                                        <button onClick={async () => { await dispatch(deleteReview(review?.id)) }}>Delete</button>}
-                                    </div> */}
-                    </div>
-                </>
-            ))}
-        </div>)
-    } 
-
+    // let divDetails;
+    // if (sessionUser) {
+    //     divDetails = (<div className='details'>
+    //         {reviewsArray.map(review => (
+    //             <>
+    //                 <div key='key' className='more-details'>
+    //                     <p>Rating: {review.rating}/5</p>
+    //                     <p className='review-review'>{review.review}</p>
+    //                     <div>{review.userId === sessionUser.id &&
+    //                         <button onClick={async () => { await dispatch(deleteReview(review?.id)) }}>Delete</button>}
+    //                     </div>
+    //                 </div>
+    //             </>
+    //         ))}
+    //     </div>)
+    // }
 
     return (
         <div className='large-container'>
@@ -116,21 +114,25 @@ const BusinessDetail = () => {
                     <p>{`${business?.description}`}</p>
                     {businessDetailHTML}
                 </div>
+                {/* {sessionUser.id === review  && divReviews} */}
                 <div className='reviews'>
                     <h2>Reviews:</h2>
-                    <div className='details'>
-                    {sessionUser && 
-                    <>
-                        {reviewsArray.map(review => (
-                            <>
-                                <div key='key' className='more-details'>
-                                    <p>Rating: {review.rating}/5</p>
-                                    <p className='review-review'>{review.review}</p>
-                                </div>
-                            </>
-                        ))}
-                    </>}
-                    </div>
+            
+                        <div className='details'>
+                            {reviewsArray.map(review => (
+                                <>
+                                    <div key='key' className='more-details'>
+                                        <p>Rating: {review.rating}/5</p>
+                                        <p className='review-review'>{review.review}</p>
+                                        {sessionUser && <div>{review.userId === sessionUser.id &&
+                                            <button onClick={async () => { await dispatch(deleteReview(review?.id)) }}>Delete</button>}
+                                        </div>}
+                                        
+                                    </div>
+                                </>
+                            ))}
+                        </div>
+
                 </div>
             </div>
             <div className='filler'></div>
