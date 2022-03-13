@@ -12,7 +12,7 @@ const NewReviewForm = () => {
     const id = useParams();
     const businessId = id.id
     const [review, setReview] = useState('');
-    const [rating, setRating] = useState('');
+    const [rating, setRating] = useState(3);
     const [errors, setErrors] = useState([])
     //use dropdown for rating for now, change to stars by the end
 
