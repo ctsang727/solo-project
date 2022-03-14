@@ -21,41 +21,44 @@ function App() {
 
   return (
     <>
-      
-        <Switch>
-          <Route exact path='/'>
-            <Splashpage isLoaded={isLoaded} />
-          </Route>
-          <Route path='/login'>
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-            </Route>
-          <Route exact path= '/business/:id'>
+
+      <Switch>
+        <Route exact path='/'>
+          <Splashpage isLoaded={isLoaded} />
+        </Route>
+        <Route path='/login'>
           <Navigation isLoaded={isLoaded} />
-            <BusinessDetail />
-            </Route>
-          <Route path= '/new'>
+          <LoginFormPage />
+        </Route>
+        <Route path="/signup">
           <Navigation isLoaded={isLoaded} />
-            <NewBusinessForm />
-            </Route>
-          <Route path= '/business/edit/:id'>
+          <SignupFormPage />
+        </Route>
+        <Route exact path='/business/:id'>
           <Navigation isLoaded={isLoaded} />
-            <EditBusinessForm />
-            </Route>
-          <Route path= '/reviews/new/:id'>
+          <BusinessDetail />
+        </Route>
+        <Route path='/new'>
           <Navigation isLoaded={isLoaded} />
-            <NewReviewForm/>
-          </Route>
-          <Route path= '/all'>
-            <Navigation isLoaded={isLoaded} />
-            <AllBuinessesPage />
-          </Route>
-        </Switch>
-      
+          <NewBusinessForm />
+        </Route>
+        <Route path='/business/edit/:id'>
+          <Navigation isLoaded={isLoaded} />
+          <EditBusinessForm />
+        </Route>
+        <Route path='/reviews/new/:id'>
+          <Navigation isLoaded={isLoaded} />
+          <NewReviewForm />
+        </Route>
+        <Route path='/all'>
+          <Navigation isLoaded={isLoaded} />
+          <AllBuinessesPage />
+        </Route>
+      </Switch>
+
     </>
-  )};
+  )
+};
 
 
 export default App;

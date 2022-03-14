@@ -111,11 +111,11 @@ const Splashpage = () => {
                     </div>
                     <div className='splash-under-search'>
                         <ul className='splash-ul-under-search'>
-                            <li>Plumbers</li>
-                            <li>Restaurants</li>
-                            <li>Home Services</li>
-                            <li>Delivery</li>
-                            <li>Black Owned</li>
+                            <li>React</li>
+                            <li>Redux</li>
+                            <li>Express</li>
+                            <li>Sequelize</li>
+                            <li>Javascript</li>
                         </ul>
                     </div>
                 </div>
