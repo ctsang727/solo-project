@@ -74,7 +74,7 @@ const NewReviewForm = () => {
                 <textarea
                     onChange={(e) => setReview(e.target.value)}
                     value={review}
-                    placeholder='Write your review here'
+                    placeholder='To submit your review, please explain your rating to others.'
                     name='review'
                 >
                 </textarea>
