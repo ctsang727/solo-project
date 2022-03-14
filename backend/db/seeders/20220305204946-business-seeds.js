@@ -35,7 +35,7 @@ module.exports = {
         city: "New York",
         state: "NY",
         zipCode: "10001",
-        imageUrl: "https://static.wikia.nocookie.net/friends/images/9/93/Central-perk.jpg/revision/latest/scale-to-width-down/1000?cb=20160612222529",
+        imageUrl: "https://i.pinimg.com/originals/de/d2/a8/ded2a8e41dcbbb7de2e54a6e9026db76.jpg",
         createdAt: new Date(),
         updatedAt: new Date()
       },
