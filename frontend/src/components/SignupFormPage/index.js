@@ -31,7 +31,7 @@ function SignupFormPage() {
     };
 
     return (
-        <div className='large-container'>
+        <div className='large-container-signup'>
             <div className='signup-form-container'>
                 <form onSubmit={handleSubmit}>
                     <ul>
@@ -77,14 +77,15 @@ function SignupFormPage() {
                     />
                     <button type="submit">Sign Up</button>
                 </form>
-                <div>
-                    <p>Already have an account?</p>
-                    <Link to='/login'>Log in here</Link>
-                </div>
+                
             </div>
             <div className='container2'>
                 <img alt='default 2' src='https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png'></img>
             </div>
+            <div className="already">
+                    <p>Already have an account? <Link to='/login'> Log in here</Link></p>
+                    
+                </div>
         </div>
     );
 }

@@ -74,24 +74,6 @@ const BusinessDetail = () => {
         )
     }
 
-    //want to be able to see business details without having to be logged in
-    // let divDetails;
-    // if (sessionUser) {
-    //     divDetails = (<div className='details'>
-    //         {reviewsArray.map(review => (
-    //             <>
-    //                 <div key='key' className='more-details'>
-    //                     <p>Rating: {review.rating}/5</p>
-    //                     <p className='review-review'>{review.review}</p>
-    //                     <div>{review.userId === sessionUser.id &&
-    //                         <button onClick={async () => { await dispatch(deleteReview(review?.id)) }}>Delete</button>}
-    //                     </div>
-    //                 </div>
-    //             </>
-    //         ))}
-    //     </div>)
-    // }
-
     return (
         <div className='large-container'>
             <div className='filler'></div>
@@ -99,7 +81,7 @@ const BusinessDetail = () => {
                 <img alt='business photo' src={`${business?.imageUrl}`}></img>
                 <div className='h-container'>
                     <h1>{`${business?.title}`}</h1>
-                    <h2 className='rating'>Average Rating: {ratingsAvg(reviewsArray)}</h2>
+                    <h2 className='rating' style={{color:'#d32323',}}>Average Rating: {ratingsAvg(reviewsArray)}</h2>
                 </div>
             </div>
 
@@ -114,7 +96,6 @@ const BusinessDetail = () => {
                     <p>{`${business?.description}`}</p>
                     {businessDetailHTML}
                 </div>
-                {/* {sessionUser.id === review  && divReviews} */}
                 <div className='reviews'>
                     <h2>Reviews:</h2>
             
@@ -122,10 +103,11 @@ const BusinessDetail = () => {
                             {reviewsArray.map(review => (
                                 <>
                                     <div key='key' className='more-details'>
-                                        <p>Rating: {review.rating}/5</p>
+                                        <p style={{color:'#d32323',}}>Rating: {review.rating}/5</p>
                                         <p className='review-review'>{review.review}</p>
                                         {sessionUser && <div>{review.userId === sessionUser.id &&
                                             <button onClick={async () => { await dispatch(deleteReview(review?.id)) }}>Delete</button>}
+                                            
                                         </div>}
                                         
                                     </div>

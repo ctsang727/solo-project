@@ -29,6 +29,7 @@ form input {
     height: 35px;
     width: 348px;
     padding:0px;
+    margin: 5px;
 }
 
 form textarea {

@@ -34,9 +34,9 @@ function LoginFormPage() {
     }
 
     return (
-        <div className='large-container'>
+        <div className='large-container-login'>
             <div className='form-container'>
-                <form onSubmit={handleSubmit}>
+                <form className='login-form' onSubmit={handleSubmit}>
                     <ul>
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
@@ -54,9 +54,12 @@ function LoginFormPage() {
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
+                        <div className='buttons-login'> 
                     <button type="submit">Log In</button>
+                    <button type='submit' onClick={demoSubmit}>Demo</button>
+                    </div>
                 </form>
-                <button type='submit' onClick={demoSubmit}>Demo</button>
+                
             </div>
             <div className='container2'>
                 <img alt='default' src='https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png'></img>

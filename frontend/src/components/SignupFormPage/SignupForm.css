@@ -1,44 +1,35 @@
-.large-container{
+.large-container-signup{
     display:grid;
     grid-template-columns: 1fr 1fr;
+    margin-top: 200px;
+    
 }
 
-
-form{
+.signup-form-container {
     display:flex;
     flex-direction: column;
     align-items: flex-end;
-}
-
-input{
-    margin: 5px;
-    width: 190px;
-}
-
-button{
-    color: #fff;
-    background: #d32323;
-    padding: 10px;
-    border-radius: 3px;
-    font-size: 16px;
-    line-height: 1.3125em;
-    border: none;
-    width: 200px;
-    margin: 5px;
-}
-
-.container2{
-    margin:20px;
-}
-
-img{
-    height: auto;
-    width: auto;
-    position: fixed;
-}
-
-/* #navbar {
-    list-style-type: none;
-    visibility: hidden;
     
-} */
+}
+
+.signup-form-container input{
+    margin:5px;
+}
+
+.already{
+    color: black;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    
+}
+
+.already a{
+    color:#d32323;
+    text-decoration: underline;  
+    
+}
+
+
