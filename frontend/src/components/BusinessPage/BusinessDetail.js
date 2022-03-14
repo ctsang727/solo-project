@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
-import { editBusiness, fetchOneBusiness } from '../../store/business';
+import { fetchOneBusiness } from '../../store/business';
 import { useDispatch } from 'react-redux';
 import { deleteBusiness } from '../../store/business';
 import { fetchSpecificReviews } from '../../store/review';

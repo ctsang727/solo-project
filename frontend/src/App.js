@@ -9,7 +9,7 @@ import Splashpage from "./components/SplashPage/";
 import BusinessDetail from "./components/BusinessPage/BusinessDetail";
 import NewBusinessForm from "./components/NewBusinessFolder/NewBusinessForm";
 import EditBusinessForm from "./components/EditBusinessForm";
-import NewReviewForm from "./components/NewReviewForm";
+import NewReviewForm from "./components/NewReviewFolder/NewReviewForm";
 import AllBuinessesPage from "./components/AllBusinessesPage/AllBusinesses";
 
 function App() {

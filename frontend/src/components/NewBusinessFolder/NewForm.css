@@ -6,7 +6,43 @@
 .left-half{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     margin:20px;
 }
+
+.right-half{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    width:500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+form input {
+    height: 35px;
+    width: 348px;
+    padding:0px;
+}
+
+form textarea {
+    margin: 5px;
+    height: 70px;
+    width: 350px;
+    padding:0px;
+    resize: none;
+
+}
+
+form select {
+    margin: 5px;
+    height: 35px;
+    width: 352px;
+}
+

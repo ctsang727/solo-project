@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom";
-import { postReview } from "../store/review";
+import { postReview } from "../../store/review";
+import { fetchOneBusiness } from '../../store/business';
+import './NewReview.css'
 
 
 
@@ -11,6 +13,7 @@ const NewReviewForm = () => {
     const history = useHistory();
     const id = useParams();
     const businessId = id.id
+    const business = useSelector((state) => state.businessState[businessId])
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(3);
     const [errors, setErrors] = useState([])
@@ -23,6 +26,10 @@ const NewReviewForm = () => {
 
         setErrors(errors)
     }, [review, rating])
+
+    useEffect(() => {
+        dispatch(fetchOneBusiness(businessId))
+    }, [dispatch, id])
 
 
     const handleSubmit = async (e) => {
@@ -44,20 +51,25 @@ const NewReviewForm = () => {
         history.push(`/business/${businessId}`)
     }
 
+    const handleCancel = (e) => {
+        e.preventDefault();
+        history.push(`/business/${businessId}`)
+    }
+
 
     return (
-        <div>
-            <h2>Review for business</h2>
+        <div className="new-review-container">
+            <h2>Review for {business.title}</h2>
             <form onSubmit={handleSubmit}>
                 <select
                     onChange={(e) => setRating(e.target.value)}
                     value={rating}
                     name='rating'>
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
-                    <option value={4}>4</option>
                     <option value={5}>5</option>
+                    <option value={4}>4</option>
+                    <option value={3}>3</option>
+                    <option value={2}>2</option>
+                    <option value={1}>1</option>
                 </select>
                 <textarea
                     onChange={(e) => setReview(e.target.value)}
@@ -66,7 +78,11 @@ const NewReviewForm = () => {
                     name='review'
                 >
                 </textarea>
+                <div className="buttons">
                 <button type='submit'>Submit</button>
+                <button onClick={handleCancel}>Cancel</button>
+
+                </div>
             </form>
         </div>
     )

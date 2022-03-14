@@ -7,6 +7,7 @@ import './NewForm.css'
 
 
 
+
 const NewBusinessForm = () => {
     //console.log('Start of front end')
     const dispatch = useDispatch();
@@ -115,7 +116,6 @@ const NewBusinessForm = () => {
                         value={city}
                         placeholder='City'
                         name='city' />
-                    <label>State:</label>
                     <select
                         onChange={(e) => setState(e.target.value)}
                         value={state}
@@ -189,7 +189,9 @@ const NewBusinessForm = () => {
                     <button onClick={handleCancel}>Cancel</button>
                 </form>
             </div>
-            <div className="right-half"></div>
+            <div className="right-half"> 
+                    <img src="images/yelpRightSide.png"></img>  
+            </div>
 
         </div>
     )
