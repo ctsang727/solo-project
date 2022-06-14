@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { fetchBusinesses } from '../../store/business';
 import { useHistory } from 'react-router-dom';
 import { fetchReviews } from '../../store/review';
+import Search from '../SearchBar/Search';
 
 
 const styleLogin = {
@@ -40,11 +41,8 @@ const Splashpage = () => {
     const dispatch = useDispatch();
     const businessList = useSelector((state) => state.businessState)
     const businessArray = Object.values(businessList)
-    console.log(businessArray)
-    console.log(businessList);
     const reviewList = useSelector((state) => state.reviewState)
     const reviewArray = Object.values(reviewList)
-    console.log('REVIEW LIST', reviewList)
 
 
     useEffect(() => {
@@ -105,6 +103,9 @@ const Splashpage = () => {
                     </div>
                     <div className='splash-logo'>
                         <img className='yelp-logo' src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Yelp_Logo.svg/2560px-Yelp_Logo.svg.png'></img>
+                    </div>
+                    <div>
+                        <Search data={businessList} /> 
                     </div>
                     <div className='splash-search'>
                         <input className='splash-search-bar'></input>
