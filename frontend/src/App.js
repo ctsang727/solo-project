@@ -11,6 +11,7 @@ import NewBusinessForm from "./components/NewBusinessFolder/NewBusinessForm";
 import EditBusinessForm from "./components/EditBusinessFolder/EditBusinessForm"
 import NewReviewForm from "./components/NewReviewFolder/NewReviewForm";
 import AllBuinessesPage from "./components/AllBusinessesPage/AllBusinesses";
+import Search from "./components/SearchBar/Search";
 
 function App() {
   const dispatch = useDispatch();
