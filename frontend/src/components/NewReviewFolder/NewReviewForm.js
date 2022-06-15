@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { postReview } from "../../store/review";
 import { fetchOneBusiness } from '../../store/business';
 import './NewReview.css'
+import Stars from "../StarRating/Stars";
 
 
 
@@ -56,12 +57,18 @@ const NewReviewForm = () => {
         history.push(`/business/${businessId}`)
     }
 
-
+    const test = (data) => {
+        setRating(data)
+    }
+    
     return (
         <div className="new-review-container">
             <h2>Review for {business.title}</h2>
             <form onSubmit={handleSubmit}>
-                <select
+                <Stars func={test}/>
+                
+                
+                {/* <select
                     onChange={(e) => setRating(e.target.value)}
                     value={rating}
                     name='rating'>
@@ -70,7 +77,7 @@ const NewReviewForm = () => {
                     <option value={3}>3</option>
                     <option value={2}>2</option>
                     <option value={1}>1</option>
-                </select>
+                </select> */}
                 <textarea
                     onChange={(e) => setReview(e.target.value)}
                     value={review}
