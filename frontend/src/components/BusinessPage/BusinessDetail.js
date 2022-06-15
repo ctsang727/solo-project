@@ -8,7 +8,8 @@ import { deleteBusiness } from '../../store/business';
 import { fetchSpecificReviews } from '../../store/review';
 import { deleteReview } from '../../store/review';
 import './BusinessPage.css'
-
+import ReactStars from "react-rating-stars-component";
+import Stars from '../StarRating/Stars';
 
 
 const BusinessDetail = () => {
@@ -74,14 +75,17 @@ const BusinessDetail = () => {
         )
     }
 
+  
+
     return (
         <div className='large-container'>
             <div className='filler'></div>
             <div className='photo-div'>
                 <img alt='business photo' src={`${business?.imageUrl}`}></img>
                 <div className='h-container'>
+                    
                     <h1>{`${business?.title}`}</h1>
-                    <h2 className='rating' style={{color:'#d32323',}}>Average Rating: {ratingsAvg(reviewsArray)}</h2>
+                    <h2 className='rating' style={{ color: '#d32323', }}>Average Rating: {ratingsAvg(reviewsArray)}</h2>
                 </div>
             </div>
 
@@ -98,22 +102,22 @@ const BusinessDetail = () => {
                 </div>
                 <div className='reviews'>
                     <h2>Reviews:</h2>
-            
-                        <div className='details'>
-                            {reviewsArray.map(review => (
-                                <>
-                                    <div key='key' className='more-details'>
-                                        <p style={{color:'#d32323',}}>Rating: {review.rating}/5</p>
-                                        <p className='review-review'>{review.review}</p>
-                                        {sessionUser && <div>{review.userId === sessionUser.id &&
-                                            <button onClick={async () => { await dispatch(deleteReview(review?.id)) }}>Delete</button>}
-                                            
-                                        </div>}
-                                        
-                                    </div>
-                                </>
-                            ))}
-                        </div>
+
+                    <div className='details'>
+                        {reviewsArray.map(review => (
+                            <>
+                                <div key='key' className='more-details'>
+                                    <p style={{ color: '#d32323', }}>Rating: {review.rating}/5</p>
+                                    <p className='review-review'>{review.review}</p>
+                                    {sessionUser && <div>{review.userId === sessionUser.id &&
+                                        <button onClick={async () => { await dispatch(deleteReview(review?.id)) }}>Delete</button>}
+
+                                    </div>}
+
+                                </div>
+                            </>
+                        ))}
+                    </div>
 
                 </div>
             </div>

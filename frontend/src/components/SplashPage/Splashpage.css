@@ -58,7 +58,7 @@
 }
 
 
-
+/* 
 .splash-ul-under-search{
     display: flex;
     justify-content: center;
@@ -67,7 +67,8 @@
     margin-right: 300px;
     margin-left: 300px;
     font-size: 12px;
-}
+    
+} */
 
 .splash-ul-under-search li{
     margin: 15px;

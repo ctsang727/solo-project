@@ -107,18 +107,7 @@ const Splashpage = () => {
                     <div>
                         <Search data={businessList} /> 
                     </div>
-                    <div className='splash-search'>
-                        <input className='splash-search-bar'></input>
-                    </div>
-                    <div className='splash-under-search'>
-                        <ul className='splash-ul-under-search'>
-                            <li>React</li>
-                            <li>Redux</li>
-                            <li>Express</li>
-                            <li>Sequelize</li>
-                            <li>Javascript</li>
-                        </ul>
-                    </div>
+                    
                 </div>
                 <div className='below-photo-container'>
                     <div className='filler'></div>
