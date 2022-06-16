@@ -9,6 +9,7 @@ import { fetchBusinesses } from '../../store/business';
 import { useHistory } from 'react-router-dom';
 import { fetchReviews } from '../../store/review';
 import Search from '../SearchBar/Search';
+import Stars from '../StarRating/Stars';
 
 
 const styleLogin = {
@@ -88,16 +89,13 @@ const Splashpage = () => {
         )
 
     }
-
+   
     return (
         <div>
-
             <div className='splash-everything'>
-
                 <div className='splash-main-container'>
                     <div className='splash-nav'>
                         <div></div>
-
                         {splashLinks}
                         <div></div>
                     </div>

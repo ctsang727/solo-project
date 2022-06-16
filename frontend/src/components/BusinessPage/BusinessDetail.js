@@ -8,8 +8,7 @@ import { deleteBusiness } from '../../store/business';
 import { fetchSpecificReviews } from '../../store/review';
 import { deleteReview } from '../../store/review';
 import './BusinessPage.css'
-import ReactStars from "react-rating-stars-component";
-import Stars from '../StarRating/Stars';
+import Stars from '../StarRating/Stars'
 
 
 const BusinessDetail = () => {
@@ -76,10 +75,10 @@ const BusinessDetail = () => {
     }
 
   
-
     return (
         <div className='large-container'>
             <div className='filler'></div>
+            
             <div className='photo-div'>
                 <img alt='business photo' src={`${business?.imageUrl}`}></img>
                 <div className='h-container'>
@@ -101,12 +100,14 @@ const BusinessDetail = () => {
                     {businessDetailHTML}
                 </div>
                 <div className='reviews'>
+                    
                     <h2>Reviews:</h2>
-
+                    
                     <div className='details'>
                         {reviewsArray.map(review => (
                             <>
                                 <div key='key' className='more-details'>
+                                    
                                     <p style={{ color: '#d32323', }}>Rating: {review.rating}/5</p>
                                     <p className='review-review'>{review.review}</p>
                                     {sessionUser && <div>{review.userId === sessionUser.id &&
@@ -123,6 +124,7 @@ const BusinessDetail = () => {
             </div>
             <div className='filler'></div>
             <div className='filler'></div>
+             
         </div>
     )
 }
