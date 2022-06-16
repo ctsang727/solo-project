@@ -4,8 +4,9 @@ import { FaStar } from 'react-icons/fa'
 import './stars.css'
 function Stars(props) {
     const [rating, setRating] = useState(null);
-    const [hover, setHover] = useState(null)
+    const [hover, setHover] = useState(null)  
     props.func(rating)
+
     return (
         <div>
             {[...Array(5)].map((star, i) => {
