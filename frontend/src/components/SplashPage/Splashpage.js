@@ -24,15 +24,15 @@ const styleSignup = {
     border: '2px solid white',
     padding: '5px',
     borderRadius: '3px',
-    
-    
+
+
 }
 
 const styleBusinessLinks = {
     color: '#d32323',
     fontSize: '20px',
     textDecoration: 'none',
-    fontFamily:" Helvetica Neue,Helvetica,Arial,sans-serif",
+    fontFamily: " Helvetica Neue,Helvetica,Arial,sans-serif",
     fontWeight: 'bold',
 }
 
@@ -89,7 +89,7 @@ const Splashpage = () => {
         )
 
     }
-   
+
     return (
         <div>
             <div className='splash-everything'>
@@ -102,10 +102,10 @@ const Splashpage = () => {
                     <div className='splash-logo'>
                         <img className='yelp-logo' src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Yelp_Logo.svg/2560px-Yelp_Logo.svg.png'></img>
                     </div>
-                    <div>
-                        <Search data={businessList} /> 
+                    <div className='search-div'>
+                        <Search data={businessList} />
                     </div>
-                    
+
                 </div>
                 <div className='below-photo-container'>
                     <div className='filler'></div>

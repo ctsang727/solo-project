@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import './search.css'
 
 function Search({ placeholder, data }) {
-  console.log('data', data)
   const newData = Object.values(data)
   const [filteredData, setFilteredData] = useState([])
   const [wordEntered, setWordEntered] = useState([])
-  console.log('FFFF', filteredData)
 
 
   const handleFilter = (e) => {
@@ -31,38 +29,42 @@ function Search({ placeholder, data }) {
   // }
 
   return (
-    <div className='search'>
-      <div className='searchInputs'>
-        <input type='text' value={wordEntered} placeholder='Search' onChange={handleFilter}></input>
-        {filteredData.length === 0 && wordEntered.length === 0 &&
-          <button id='searchbar-icon'><i class="fa-solid fa-magnifying-glass"></i></button>
-        }
-        {filteredData.length > 0 &&
-          <button onClick={clearInput} id='searchbar-icon'><i class="fa-solid fa-xmark"></i></button>
-        }
+    <>
+      <div className='search'>
+        <div className='searchInputs'>
+          <input type='text' value={wordEntered} placeholder='Search' onChange={handleFilter}></input>
+          {filteredData.length === 0 && wordEntered.length === 0 &&
+            <button id='searchbar-icon'><i class="fa-solid fa-magnifying-glass"></i></button>
+          }
+          {filteredData.length > 0 &&
+            <button onClick={clearInput} id='searchbar-icon'><i class="fa-solid fa-xmark"></i></button>
+          }
+          {wordEntered.length > 0 && filteredData.length === 0 &&
+            <button onClick={clearInput} id='searchbar-icon'><i class="fa-solid fa-xmark"></i></button>
+          }
+          
+        </div>
         {wordEntered.length > 0 && filteredData.length === 0 &&
-          <button onClick={clearInput} id='searchbar-icon'><i class="fa-solid fa-xmark"></i></button>
+          <div className='dataResult'>
+            <a className='dataItem' target='blank'>
+              <p> No Results </p>
+            </a>
+          </div>
         }
-      </div>
-      {wordEntered.length > 0 && filteredData.length === 0 &&
-        <div className='dataResult'>
-          <a className='dataItem' target='blank'>
-            <p> No Results </p>
-          </a>
-        </div>
-      }
 
-      {filteredData.length !== 0 &&
-        <div className='dataResult'>
-          {filteredData.slice(0, 15).map((value, key) => {
-            return (
-              <a className='dataItem' href={`/business/${value.id}`} target='blank'>
-                <p> {value.title}</p>
-              </a>
-            )
-          })}
-        </div>
-      }
+        {filteredData.length !== 0 &&
+          <div className='dataResult'>
+            {filteredData.slice(0, 15).map((value, key) => {
+              return (
+                <a className='dataItem' href={`/business/${value.id}`} target='blank'>
+                  <p> {value.title}</p>
+                </a>
+              )
+            })}
+          </div>
+        }
+
+      </div>
       <div className='splash-under-search'>
         <div id='under-search'>
           <li>React</li>
@@ -72,8 +74,7 @@ function Search({ placeholder, data }) {
           <li>Javascript</li>
         </div>
       </div>
-    </div>
-
+    </>
   )
 
 }
