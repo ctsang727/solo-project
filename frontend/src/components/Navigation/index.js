@@ -3,10 +3,11 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import Search from '../SearchBar/Search'
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
-
+  const businessList = useSelector((state) => state.businessState)
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -14,6 +15,7 @@ function Navigation({ isLoaded }) {
       <NavLink className='inactive' activeclassName='active' exact to="/">Home</NavLink>
       <NavLink className='inactive' activeclassName='active' to="/new"> For Businesses </NavLink>
       <NavLink className='inactive' activeclassName='active' to="/all"> Write a Review </NavLink>
+      <Search data={businessList}/>
       <ProfileButton user={sessionUser} />
       </>
       );

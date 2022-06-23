@@ -10,6 +10,9 @@
     margin:auto;
 }
 
+.search {
+    z-index: 0;
+}
 
 .search input {
     background-color: white;
@@ -51,7 +54,7 @@ input:focus {
 }
 
 .dataResult {
-    width: 690px;
+    width: 700px;
     margin:0;
     height: auto;
     background-color: white;
@@ -60,6 +63,10 @@ input:focus {
     overflow-y: auto;
     border-radius: 3px;
     z-index: 1;
+    position: relative;
+    
+
+   
     
 }
 
