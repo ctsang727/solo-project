@@ -15,7 +15,7 @@ function Navigation({ isLoaded }) {
       <NavLink className='inactive' activeclassName='active' exact to="/">Home</NavLink>
       <NavLink className='inactive' activeclassName='active' to="/new"> For Businesses </NavLink>
       <NavLink className='inactive' activeclassName='active' to="/all"> Write a Review </NavLink>
-      {/* <Search data={businessList}/> */}
+      <Search data={businessList}/>
       <ProfileButton user={sessionUser} />
       </>
       );
