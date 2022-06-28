@@ -1,7 +1,7 @@
-#footer{
+#footer {
     height: 300px;
     background-color: #f7f7f7;
-    border-top:rgb(172, 172, 172) 1px solid;
+    border-top: rgb(172, 172, 172) 1px solid;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
@@ -9,64 +9,69 @@
 
 }
 
-#footer > div > li > a{
+#footer>div>li>a {
     text-decoration: none;
-    color: rgba(110,112,114,1);
-    
+    color: rgba(110, 112, 114, 1);
+
 }
-#footer > div > li > a:hover{
+
+#footer>div>li>a:hover {
     text-decoration: underline;
-    color: rgba(110,112,114,1);
-    
+    color: rgba(110, 112, 114, 1);
+
 }
 
-#footer > div > li{
+#footer>div>li {
     text-decoration: none;
-    color: rgba(110,112,114,1);
+    color: rgba(110, 112, 114, 1);
 }
 
-#tech-used{
+#tech-used {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
 }
-#tech-used li{
+
+#tech-used li {
     list-style: none;
     margin: 3px;
 }
-#developer{
+
+#developer {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
 }
-#developer li{
+
+#developer li {
     list-style: none;
     margin: 3px;
 }
 
-#other-sites{
+#other-sites {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
 }
-#other-sites li{
+
+#other-sites li {
     list-style: none;
     margin: 3px;
 }
 
 
-.splash-everything{
-    display:grid;
+.splash-everything {
+    display: grid;
     grid-template-rows: 1fr 1fr;
 
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.splash-everything > div {
+.splash-everything>div {
     text-align: center;
 }
 
-.splash-main-container{
+.splash-main-container {
     display: flex;
     flex-direction: column;
     height: 700px;
@@ -83,35 +88,35 @@
     margin: 10px;
 }
 
-.splash-ul{
+.splash-ul {
     display: grid;
     grid-template-columns: 10% 10% 60% 10% 10%;
     padding: 0;
 }
 
-.splash-ul li{
+.splash-ul li {
     list-style-type: none;
     margin: 5px;
     font-size: 12px;
-    color:white;
+    color: white;
     padding: 1px;
     flex-wrap: nowrap;
-    display:flex;
+    display: flex;
     align-items: center;
 
 }
 
-.splash-logo{
-    margin:40px;
+.splash-logo {
+    margin: 40px;
 }
 
-.yelp-logo{
+.yelp-logo {
     height: 75px;
     width: 180px;
     position: relative;
 }
 
-.splash-search-bar{
+.splash-search-bar {
     width: 640px;
     border-radius: 3px;
     border: 1px solid white;
@@ -132,32 +137,32 @@
     
 } */
 
-.splash-ul-under-search li{
+.splash-ul-under-search li {
     margin: 15px;
 }
 
-.below-photo-container{
-    display:grid;
+.below-photo-container {
+    display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     margin: 10px;
 }
 
-.below-photo{
+.below-photo {
     margin-top: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.below-photo p{
+.below-photo p {
     color: black;
     font-size: 12px;
 }
 
-.home-span{
+.home-span {
     border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.842);
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.219);
-    height:200px;
+    height: 200px;
     margin: 5px;
     padding: 10px;
     display: flex;
@@ -165,11 +170,18 @@
     align-content: center;
     justify-content: space-evenly;
     align-items: center;
-    
-    
+
+
 }
-    
 
+#under-search {
+    z-index: 0;
+    position: fixed;
+    top: 20rem;
+}
 
-
-
+.search-div {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
