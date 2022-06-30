@@ -61,8 +61,7 @@ input:focus {
     overflow-y: auto;
     border-radius: 3px;
     z-index: 1;
-    position: fixed;
-    top: auto;
+
 
     
 }
