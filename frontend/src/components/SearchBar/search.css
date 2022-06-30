@@ -109,6 +109,7 @@ a:hover {
 #under-search{
     display: flex;
     flex-direction: row;
+    
 }
 
 .splash-under-search li{

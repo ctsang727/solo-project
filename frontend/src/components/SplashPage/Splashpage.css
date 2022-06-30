@@ -173,12 +173,15 @@
 
 
 }
-/* 
-#under-search {
+
+.splash-under-search{
     z-index: 0;
-    position: fixed;
+}
+#under-search {
+    z-index: 1;
+    position: absolute;
     top: 20rem;
-} */
+}
 
 .search-div {
     display: flex;
