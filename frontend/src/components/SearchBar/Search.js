@@ -56,7 +56,7 @@ function Search({ placeholder, data }) {
           <div className='dataResult'>
             {filteredData.slice(0, 15).map((value, key) => {
               return (
-                <a className='dataItem' href={`/business/${value.id}`} target='blank'>
+                <a className='dataItem' href={`/business/${value.id}`} target='_self'>
                   <p> {value.title}</p>
                 </a>
               )
