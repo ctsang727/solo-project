@@ -13,6 +13,9 @@ function TestPhoto() {
     const formData = new FormData();
     formData.append('photo', photo);
     formData.append('userId', sessionUser.id)
+
+    console.log(formData.values)
+    console.log(photo)
     console.log('submit')
   }
 
