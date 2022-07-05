@@ -12,6 +12,7 @@ import EditBusinessForm from "./components/EditBusinessFolder/EditBusinessForm"
 import NewReviewForm from "./components/NewReviewFolder/NewReviewForm";
 import AllBuinessesPage from "./components/AllBusinessesPage/AllBusinesses";
 import Search from "./components/SearchBar/Search";
+import TestPhoto from "./components/TestPhoto/TestPhoto";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,10 @@ function App() {
         <Route path='/reviews/new/:id'>
           <Navigation isLoaded={isLoaded} />
           <NewReviewForm />
+        </Route>
+        <Route path='/test'>
+          <Navigation isLoaded={isLoaded}/>
+          <TestPhoto />
         </Route>
         <Route path='/all'>
           <Navigation isLoaded={isLoaded} />
