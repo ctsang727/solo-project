@@ -1,4 +1,6 @@
 'use strict';
+const { Validator } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   const Photo = sequelize.define('Photo', {
     userId: {

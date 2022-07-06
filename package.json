@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines":{
+  "engines": {
     "node": "16.x",
-    "npm":"8.3.1"
+    "npm": "8.3.1"
   },
   "scripts": {
     "heroku-postbuild": "npm run build --prefix frontend",
@@ -29,6 +29,9 @@
   "homepage": "https://github.com/ctsang727/solo-project#readme",
   "dependencies": {
     "@material-ui/icons": "^4.11.3",
-    "@mui/icons-material": "^5.8.4"
+    "@mui/icons-material": "^5.8.4",
+    "aws-sdk": "^2.1168.0",
+    "multer": "^1.4.5-lts.1",
+    "util": "^0.12.4"
   }
 }

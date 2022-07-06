@@ -1,6 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
+const multer = require('multer');
 
 //require models
 const { Business } = require('../../db/models');
