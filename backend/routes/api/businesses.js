@@ -1,7 +1,9 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-
+// const multer = require('multer');
+// const aws = require('aws-sdk')
+// const multerS3 = require('multer-s3')
 //require models
 const { Business } = require('../../db/models');
 
@@ -31,13 +33,16 @@ router.get(
 )
 
 
-router.post(
-  '/new', validateCreate,
-   asyncHandler(async (req, res) => {
-    //console.log('INSIDE POST ROUTE')
-    const business = await Business.create(req.body);
-    return res.json(business);
-  }));
+// router.post(
+//   '/new', validateCreate, upload.single('image'),
+//    asyncHandler(async (req, res) => {
+//     //console.log('INSIDE POST ROUTE')
+//     const file = req.file
+//     console.log(file)
+//     await uploadFile(file)
+//     const business = await Business.create(req.body);
+//     return res.json(business);
+//   }));
 
 //edit business
 router.put(

@@ -8,6 +8,8 @@ import './NewForm.css'
 
 
 
+
+
 const NewBusinessForm = () => {
     //console.log('Start of front end')
     const dispatch = useDispatch();
@@ -17,6 +19,7 @@ const NewBusinessForm = () => {
     // console.log(nextBusiness)
     //console.log(sessionUser?.id)
     const [errors, setValidationErrors] = useState([])
+
 
 
     //const [ownerId, setOwnerId] = useState(sessionUser)
@@ -46,7 +49,7 @@ const NewBusinessForm = () => {
 
 
         setValidationErrors(errors)
-    }, [title,description,address,city,zipCode,imageUrl])
+    }, [title, description, address, city, zipCode, imageUrl])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -76,6 +79,14 @@ const NewBusinessForm = () => {
         history.push(`/`)
     }
 
+    const updateFiles = (e) => {
+        let files = e.target.files;
+            console.log(files)
+            setImageUrl(files[0].name);
+            
+        
+        
+    };
     return (
         <div className="new-form-large-container">
             <div className="left-half">
@@ -184,13 +195,25 @@ const NewBusinessForm = () => {
                         value={imageUrl}
                         placeholder='Image URL'
                         name='imageUrl'
-                        />
+                    />
                     <button type="submit">Submit</button>
                     <button onClick={handleCancel}>Cancel</button>
                 </form>
+
+                <div className="aws-upload-input-div">
+                        <label className="add-photo-new-biz-btn">
+                            Upload photos
+                            <input className="img-upload-none"
+                            type="file"
+                            multiple
+                            onChange={updateFiles} />
+                        </label>
+                        
+
+                    </div>
             </div>
-            <div className="right-half"> 
-                    <img src="images/yelpRightSide.png"></img>  
+            <div className="right-half">
+                <img src="images/yelpRightSide.png"></img>
             </div>
 
         </div>

@@ -13,6 +13,7 @@ import NewReviewForm from "./components/NewReviewFolder/NewReviewForm";
 import AllBuinessesPage from "./components/AllBusinessesPage/AllBusinesses";
 import Search from "./components/SearchBar/Search";
 import TestPhoto from "./components/TestPhoto/TestPhoto";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +60,10 @@ function App() {
         <Route path='/all'>
           <Navigation isLoaded={isLoaded} />
           <AllBuinessesPage />
+        </Route>
+        <Route path = '/*'>
+          <Navigation isLoaded={isLoaded}/>
+          <NotFound/>
         </Route>
       </Switch>
 
