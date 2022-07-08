@@ -1,0 +1,30 @@
+#not-found-container{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+}
+
+#not-found-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:2rem;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    text-align: left;
+}
+
+#not-found-left a{
+    text-decoration: underline;
+    color: #027a97;
+}
+#not-found-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#not-found-right img{
+    box-shadow: inset 0px 0px 40px 40px #DBA632;
+
+}
