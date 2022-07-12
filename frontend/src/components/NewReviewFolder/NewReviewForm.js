@@ -64,7 +64,7 @@ const NewReviewForm = () => {
     return (
         <div className="new-review-container">
             <h2>Review for {business.title}</h2>
-            <form onSubmit={handleSubmit}>
+            <form className="new-review-form" onSubmit={handleSubmit}>
                 <Stars func={test}/>
                 
                 

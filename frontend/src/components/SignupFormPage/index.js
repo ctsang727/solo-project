@@ -33,7 +33,7 @@ function SignupFormPage() {
     return (
         <div className='large-container-signup'>
             <div className='signup-form-container'>
-                <form onSubmit={handleSubmit}>
+                <form className="signup-form-form" onSubmit={handleSubmit}>
                     <ul>
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>

@@ -55,3 +55,20 @@ h2.rating{
        
     
 }
+
+.stars{
+    max-width:fit-content;
+    max-height: fit-content;
+    margin-bottom: 1rem;
+}
+
+.review-stars{
+    max-width: 10rem;
+    max-height: 10rem;
+}
+
+.review-review{
+    font-size: 20px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}

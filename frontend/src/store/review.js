@@ -48,7 +48,7 @@ export const fetchReviews = () => async dispatch => {
 
 //GET reviews for one business thunk
 export const fetchSpecificReviews = id => async dispatch => {
-    console.log('333333333333', id)
+    //console.log('333333333333', id)
     const res = await csrfFetch(`/api/reviews/${id}`)
     const reviews = await res.json()
     dispatch(loadSpecificReviews(reviews))

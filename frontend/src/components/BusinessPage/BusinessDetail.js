@@ -12,7 +12,7 @@ import Navigation from '../Navigation';
 
 
 const BusinessDetail = () => {
-    console.log('MAIN BUSINESS PAGE')
+    //console.log('MAIN BUSINESS PAGE')
     const dispatch = useDispatch();
     const { id } = useParams();
     const history = useHistory();
@@ -64,6 +64,48 @@ const BusinessDetail = () => {
 
     }
 
+
+    const stars = () => {
+        if(ratingsAvg(reviewsArray) < 1){
+            return (<div><img src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/zero-star.png?raw=true" alt="0-star"></img></div>)
+        } else if (ratingsAvg(reviewsArray) < 1.5) {
+            return (<div><img src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true" alt="0-star"></img></div>)
+        } else if (ratingsAvg(reviewsArray) >= 1.5 && ratingsAvg(reviewsArray) < 2) {
+            return (<div><img src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-half-star.png?raw=true" alt="0-star"></img></div>)
+        } else if (ratingsAvg(reviewsArray) < 2.5) {
+            return (<div><img src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-star.png?raw=true" alt="0-star"></img></div>)
+        } else if (ratingsAvg(reviewsArray) >= 2.5 && ratingsAvg(reviewsArray) < 3) {
+            return (<div><img src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-half-star.png?raw=true" alt="0-star"></img></div>)
+        } else if (ratingsAvg(reviewsArray) < 3.5) {
+            return (<div><img src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-star.png?raw=true" alt="0-star"></img></div>)
+        } else if (ratingsAvg(reviewsArray) >= 3.5 && ratingsAvg(reviewsArray) < 4) {
+            return (<div><img src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-half-star.png?raw=true" alt="0-star"></img></div>)
+        } else if (ratingsAvg(reviewsArray) < 4.5) {
+            return (<div><img src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-star.png?raw=true" alt="0-star"></img></div>)
+        } else if (ratingsAvg(reviewsArray) >= 4.5 && ratingsAvg(reviewsArray) < 5) {
+            return (<div><img src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-half-star.png?raw=true" alt="0-star"></img></div>)
+        } else if (ratingsAvg(reviewsArray) === 5) {
+            return (<div><img src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/five-star.png?raw=true" alt="0-star"></img></div>)
+        }
+    }
+
+    const reviewStars = (rating) => {
+        if(rating === 1){
+            return (<img className='review-stars' src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true'></img>)
+        } else if (rating === 2){
+            return (<img className='review-stars' src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-star.png?raw=true'></img>)
+        } else if (rating === 3){
+            return (<img className='review-stars' src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-star.png?raw=true'></img>)
+        } else if (rating === 4){
+            return (<img className='review-stars' src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-star.png?raw=true'></img>)
+        } else if (rating === 5){
+            return (<img className='review-stars' src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/five-star.png?raw=true'></img>)
+        }
+            
+    }
+
+    
+
     let businessDetailHTML;
     if (sessionUser && sessionUser.id === business.ownerId) {
         businessDetailHTML = (
@@ -85,7 +127,8 @@ const BusinessDetail = () => {
                     <div className='h-container'>
 
                         <h1>{`${business?.title}`}</h1>
-                        <h2 className='rating' style={{ color: '#d32323', }}>Average Rating: {ratingsAvg(reviewsArray)}</h2>
+                        <div className='stars'>{stars()}</div>
+                        {/* <h2 className='rating' style={{ color: '#d32323', }}>Average Rating: {ratingsAvg(reviewsArray)}</h2> */}
                     </div>
                 </div>
 
@@ -109,7 +152,8 @@ const BusinessDetail = () => {
                                 <>
                                     <div key='key' className='more-details'>
 
-                                        <p style={{ color: '#d32323', }}>Rating: {review.rating}/5</p>
+                                        {/* <p style={{ color: '#d32323', }}>Rating: {review.rating}/5</p> */}
+                                        <p>{reviewStars(review.rating)}</p>
                                         <p className='review-review'>{review.review}</p>
                                         {sessionUser && <div>{review.userId === sessionUser.id &&
                                             <button onClick={async () => { await dispatch(deleteReview(review?.id)) }}>Delete</button>}

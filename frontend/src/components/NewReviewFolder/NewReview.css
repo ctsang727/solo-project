@@ -1,18 +1,30 @@
-.new-review-container{
+.new-review-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: rgb(240, 240, 240);
-    padding: 25px;  
+    padding: 25px;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+
 }
 
-.new-review-container select{
+.new-review-container select {
     height: 40px;
-    width:500px; 
+    width: 500px;
 }
 
-.new-review-container textarea{
+.new-review-container textarea {
     height: 200px;
+    width: 500px;
+    border-radius: 5px;
+    border: none;
+    margin:1rem
+}
+
+.new-review-form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     width: 500px;
 }
