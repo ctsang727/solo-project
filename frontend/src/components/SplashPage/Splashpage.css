@@ -1,5 +1,6 @@
 #footer {
-    height: 300px;
+    margin-top: 10rem;
+    padding-bottom: 1rem;
     background-color: #f7f7f7;
     border-top: rgb(172, 172, 172) 1px solid;
     display: grid;
