@@ -17,7 +17,7 @@
     align-items: center;
 }
 
-form{
+.new-business-form{
     width:500px;
     display: flex;
     flex-direction: column;
@@ -25,14 +25,14 @@ form{
     
 }
 
-form input {
+.new-business-form input {
     height: 35px;
     width: 348px;
     padding:0px;
     margin: 5px;
 }
 
-form textarea {
+.new-business-form textarea {
     margin: 5px;
     height: 70px;
     width: 350px;
@@ -41,7 +41,7 @@ form textarea {
 
 }
 
-form select {
+.new-business-form select {
     margin: 5px;
     height: 35px;
     width: 352px;

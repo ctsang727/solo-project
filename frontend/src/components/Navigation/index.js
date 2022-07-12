@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import Search from '../SearchBar/Search'
+import { fetchBusinesses } from '../../store/business';
 
 function Navigation({ isLoaded }) {
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const businessList = useSelector((state) => state.businessState)
+  useEffect(() => {
+    dispatch(fetchBusinesses())
+}, [dispatch])
+  //console.log('123', businessList)
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (

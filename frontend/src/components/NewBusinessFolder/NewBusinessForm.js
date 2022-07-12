@@ -81,11 +81,11 @@ const NewBusinessForm = () => {
 
     const updateFiles = (e) => {
         let files = e.target.files;
-            console.log(files)
-            setImageUrl(files[0].name);
-            
-        
-        
+        console.log(files)
+        setImageUrl(files[0].name);
+
+
+
     };
     return (
         <div className="new-form-large-container">
@@ -200,17 +200,17 @@ const NewBusinessForm = () => {
                     <button onClick={handleCancel}>Cancel</button>
                 </form>
 
-                <div className="aws-upload-input-div">
-                        <label className="add-photo-new-biz-btn">
-                            Upload photos
-                            <input className="img-upload-none"
+                {/* <div className="aws-upload-input-div">
+                    <label className="add-photo-new-biz-btn">
+                        Upload photos
+                        <input className="img-upload-none"
                             type="file"
                             multiple
                             onChange={updateFiles} />
-                        </label>
-                        
+                    </label>
 
-                    </div>
+
+                </div> */}
             </div>
             <div className="right-half">
                 <img src="images/yelpRightSide.png"></img>

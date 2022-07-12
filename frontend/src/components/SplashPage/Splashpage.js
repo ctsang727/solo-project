@@ -37,7 +37,7 @@ const styleBusinessLinks = {
 }
 
 const Splashpage = () => {
-    console.log('on splash')
+    // console.log('on splash')
     const history = useHistory();
     const dispatch = useDispatch();
     const businessList = useSelector((state) => state.businessState)
