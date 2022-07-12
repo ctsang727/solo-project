@@ -18,7 +18,7 @@ const BusinessDetail = () => {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
     const business = useSelector((state) => state.businessState[id])
-    const businessList = useSelector((state) => state.businessState)
+    //const businessList = useSelector((state) => state.businessState)
     const reviews = useSelector((state) => state.reviewState)
     const reviewsArray = Object.values(reviews)
 
