@@ -16,7 +16,7 @@ const styleBusinessLinks = {
 
 
 const AllBuinessesPage = () => {
-    console.log('all businesses listed here')
+    //console.log('all businesses listed here')
     const history = useHistory();
     const dispatch = useDispatch();
     const businessList = useSelector((state) => state.businessState)

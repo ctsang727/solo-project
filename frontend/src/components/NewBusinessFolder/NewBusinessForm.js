@@ -67,7 +67,7 @@ const NewBusinessForm = () => {
 
 
         const newBusiness = await dispatch(postBusiness(business))
-        console.log(newBusiness)
+        // console.log(newBusiness)
         // console.log('NEW BIZ AFTER DISPATCH', business)
         // console.log(nextBusiness)
 
@@ -79,14 +79,14 @@ const NewBusinessForm = () => {
         history.push(`/`)
     }
 
-    const updateFiles = (e) => {
-        let files = e.target.files;
-        console.log(files)
-        setImageUrl(files[0].name);
+    // const updateFiles = (e) => {
+    //     let files = e.target.files;
+    //     console.log(files)
+    //     setImageUrl(files[0].name);
 
 
 
-    };
+    //};
     return (
         <div className="new-form-large-container">
             <div className="left-half">

@@ -32,7 +32,7 @@ router.get(
 router.post(
     '/new/:id', 
     asyncHandler(async (req, res) => {
-        console.log('INSIDE API')
+        //console.log('INSIDE API')
         const review = await Review.create(req.body);
         return res.json(review);
     })
@@ -46,7 +46,7 @@ router.delete(
     '/:id',
     asyncHandler(async function(req, res) {
         const reviewId = parseInt(req.params.id)
-        console.log('INSIDE API', reviewId)
+        //console.log('INSIDE API', reviewId)
         const review = await Review.findByPk(reviewId)
         await review.destroy();
         return res.json(reviewId)
