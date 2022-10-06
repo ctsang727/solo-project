@@ -1,0 +1,64 @@
+.large-container-signup{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 200px;
+    
+}
+
+.signup-form-container {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
+}
+
+.signup-form-container input{
+    margin:5px;
+}
+
+.already{
+    color: black;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    
+}
+
+.already a{
+    color:#d32323;
+    text-decoration: underline;  
+    
+}
+
+.signup-form-form{
+    width:500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+.signup-form-form input {
+    height: 35px;
+    width: 348px;
+    padding:0px;
+    margin: 5px;
+}
+
+.signup-form-form textarea {
+    margin: 5px;
+    height: 70px;
+    width: 350px;
+    padding:0px;
+    resize: none;
+
+}
+
+.signup-form-form select {
+    margin: 5px;
+    height: 35px;
+    width: 352px;
+}
+

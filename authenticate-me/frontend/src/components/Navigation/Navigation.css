@@ -1,0 +1,76 @@
+.active {
+    text-decoration: none;
+    padding:20px;
+}
+
+.inactive{
+    color:#d32323;
+    text-decoration: none;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+
+#navbar{
+    list-style-type: none;
+    color: blue;
+    position:sticky;
+    z-index: 1;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 3px 5px #8b8b8b;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top:0;
+    padding:20px;
+    
+}
+
+.profile-button{
+    background-color: rgb(97, 97, 97);
+    z-index: 0;
+    position: relative;
+    width: 75%; 
+}
+
+.profile-dropdown{
+    position: absolute;
+    list-style-type: none;
+    margin-top:10px;
+    padding:0px;
+    border-radius: 3px;
+    background-color: rgba(168, 168, 168, 0.432);
+    
+    
+}
+
+/*icons needed */
+.profile-dropdown li{
+    color:blue;
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding:3px;
+}
+
+.profile-dropdown button{
+    color:black;
+    
+    
+}
+
+.profile-button-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.splash-ul{
+    text-align: center;
+}
+
+.profile-logout-button{
+    width:100px;
+    background:none;
+    font-size:12px;
+    
+}

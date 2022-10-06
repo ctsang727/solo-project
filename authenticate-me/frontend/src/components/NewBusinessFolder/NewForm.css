@@ -1,0 +1,49 @@
+.new-form-large-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.left-half{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:20px;
+}
+
+.right-half{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-business-form{
+    width:500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+.new-business-form input {
+    height: 35px;
+    width: 348px;
+    padding:0px;
+    margin: 5px;
+}
+
+.new-business-form textarea {
+    margin: 5px;
+    height: 70px;
+    width: 350px;
+    padding:0px;
+    resize: none;
+
+}
+
+.new-business-form select {
+    margin: 5px;
+    height: 35px;
+    width: 352px;
+}
+
