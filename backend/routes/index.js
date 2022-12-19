@@ -41,6 +41,6 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-router.use('/api', apiRouter);
+//router.use('/api', apiRouter);
 
 module.exports = router;

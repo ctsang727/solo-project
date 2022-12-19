@@ -1,0 +1,10 @@
+line 44 in backend/routes/index 
+    probably nothing but noticed that line probably not needed as it is repeated from the beginning
+
+root directory package.json
+    line 11, under scripts
+        deleted "heroku-postbuild": "npm run build --prefix frontend",
+        inserted "render-postbuild": "npm run build --prefix frontend",
+    line 18
+        inserted "build": "npm run build --prefix backend"
+
