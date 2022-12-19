@@ -8,3 +8,36 @@ root directory package.json
     line 18
         inserted "build": "npm run build --prefix backend"
 
+.env 
+    SCHEMA variable 
+
+created backend/psql-setup-script.js
+    added given code from Open
+
+backend/package.json 
+    added script 
+        "build" ... 
+
+config/database.js  
+    define: {
+        schema: ... 
+    }
+
+every migration file 
+    let options = {};
+    if (process.env.NODE_ENV === 'production') {
+    options.schema = process.env.SCHEMA;  // define your schema in options object
+    }
+
+    also options object 
+
+
+every seeder file 
+    let options = {};
+    if (process.env.NODE_ENV === 'production') {
+    options.schema = process.env.SCHEMA;  // define your schema in options object
+    }
+    
+    and options 
+
+
