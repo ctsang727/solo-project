@@ -123,7 +123,7 @@ const BusinessDetail = () => {
                 <div className='filler'></div>
 
                 <div className='photo-div'>
-                    <img alt='business photo' src={`${business?.imageUrl}`}></img>
+                    <img id='main-photo' alt='business photo' src={`${business?.imageUrl}`}></img>
                     <div className='h-container'>
 
                         <h1>{`${business?.title}`}</h1>

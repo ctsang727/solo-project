@@ -28,6 +28,11 @@ h2.rating{
     min-width: 100%;
 }
 
+#main-photo{
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 5px gray;
+}
+
 .reviews{
     display: flex;
     flex-direction: column;

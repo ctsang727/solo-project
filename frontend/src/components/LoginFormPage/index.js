@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -40,26 +40,32 @@ function LoginFormPage() {
                     <ul>
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
-                        <input
-                            placeholder='Email'
-                            type="text"
-                            value={credential}
-                            onChange={(e) => setCredential(e.target.value)}
-                            required
-                        />
-                        <input
-                            placeholder='Password'
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                        <div className='buttons-login'> 
-                    <button type="submit">Log In</button>
-                    <button type='submit' onClick={demoSubmit}>Demo</button>
+                    <input
+                        placeholder='Email'
+                        type="text"
+                        value={credential}
+                        onChange={(e) => setCredential(e.target.value)}
+                        required
+                    />
+                    <input
+                        placeholder='Password'
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <div className='buttons-login'>
+                        <div>
+                            <button type="submit">Log In</button>
+                            <button type='submit' onClick={demoSubmit}>Demo</button>
+                        </div>
+
+                    </div>
+                    <div className='signup-link'>
+                        <p>Don't have an account? <NavLink exact to="/signup">Sign up here!</NavLink></p>
                     </div>
                 </form>
-                
+
             </div>
             <div className='container2'>
                 <img alt='default' src='https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png'></img>
